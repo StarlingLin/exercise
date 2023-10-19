@@ -45,6 +45,8 @@ int main()
 		printf("[]");
 	if (lx != rx)
 		printf("()");
+	if (ld == rd && lz == rz && lx == rx)
+		printf("NULL");
 
 	return 0;
 }
