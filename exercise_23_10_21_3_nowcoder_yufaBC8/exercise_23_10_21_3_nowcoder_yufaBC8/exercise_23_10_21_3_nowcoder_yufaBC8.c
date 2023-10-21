@@ -16,7 +16,7 @@ int main()
 
 		for (int k = 1; k <= 5 - 2 * (int)fabs(3 - i); k++)
 			printf("%c", ch);
-		
+
 		printf("\n");
 	}
 
