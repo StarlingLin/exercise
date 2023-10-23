@@ -49,9 +49,9 @@ void game()
 	else if (cnt <= 5)
 		printf("666\n你用%d次就猜中了！\n", cnt);
 	else if (cnt <= 10)
-		printf("就这？就这？！\n你用了%d次才猜中", cnt);
+		printf("就这？就这？！\n你用了%d次才猜中\n", cnt);
 	else
-		printf("好好好，这么玩是吧？\n%d次猜中，太菜了", cnt);
+		printf("好好好，这么玩是吧？\n%d次猜中，太菜了\n", cnt);
 
 
 }
