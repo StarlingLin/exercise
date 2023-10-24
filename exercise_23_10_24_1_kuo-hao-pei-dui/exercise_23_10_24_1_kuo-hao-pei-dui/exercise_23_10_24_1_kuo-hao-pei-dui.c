@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-_Bool pd(char kh2, char khsz[100], int n)
+_Bool pd(char kh2, char khsz[1000], int n)
 {
 	int j = 0;
 	for (j = n; 0 == khsz[j]; j--);
@@ -15,8 +15,8 @@ _Bool pd(char kh2, char khsz[100], int n)
 
 int main()
 {
-	char arr[100] = { 0 };
-	char kuohao[100] = { 0 };
+	char arr[1000] = { 0 };
+	char kuohao[1000] = { 0 };
 	int kh = 0;
 	int i = 0;
 	int k = 0;
