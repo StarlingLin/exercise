@@ -3,14 +3,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-_Bool Bigger(int a, int b)
-{
-	if (a > b)
-		return true;
-	else
-		return false;
-}
-
 void maopao(int p[], int n) //冒泡排序，并打印比较次数和移动次数
 {
 	_Bool flag = false;
@@ -23,7 +15,7 @@ void maopao(int p[], int n) //冒泡排序，并打印比较次数和移动次数
 		flag = false;
 		for (int i = 0; i < n - 1; i++)
 		{
-			if (Bigger(p[i], p[i + 1]))
+			if (p[i], p[i + 1])
 			{
 				swi = p[i + 1];
 				p[i + 1] = p[i];

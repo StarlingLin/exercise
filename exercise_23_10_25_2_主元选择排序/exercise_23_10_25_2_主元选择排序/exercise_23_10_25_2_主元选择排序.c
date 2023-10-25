@@ -1,15 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
 #include <stdio.h>
-#include <stdbool.h>
-
-_Bool Bigger(int a, int b)
-{
-	if (a > b)
-		return true;
-	else
-		return false;
-}
 
 void zhuyuan(int p[], int n) //主元选择排序，并打印比较次数和移动次数
 {
@@ -21,7 +12,7 @@ void zhuyuan(int p[], int n) //主元选择排序，并打印比较次数和移动次数
 		int min = p[i];
 		for (int j = i + 1; j < n; j++)
 		{
-			if (Bigger(min, p[j]))
+			if (min > p[j])
 			{
 				min = p[j];
 				ser = j;
