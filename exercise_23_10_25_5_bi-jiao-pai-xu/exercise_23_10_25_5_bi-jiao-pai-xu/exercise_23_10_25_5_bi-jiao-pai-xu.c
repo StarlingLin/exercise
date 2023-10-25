@@ -4,11 +4,6 @@
 #include <stdbool.h>
 #include <string.h>
 
-void swi(int a, int b)
-{
-	
-}
-
 void zhuyuan(int p[]) //主元选择排序，打印比较次数和移动次数
 {
 	int ser = 0;
@@ -61,34 +56,36 @@ void maopao(int p[]) //冒泡排序，打印比较次数和移动次数
 	printf("%d %d ", cnt1, cnt2);
 }
 
-void charu(int p[]) //插入排序，打印比较次数和移动次数
+void charu(int p[])//插入排序，打印比较次数和移动次数
 {
 	int cnt1 = 0;
 	int cnt2 = 0;
+	int j = 0;
 	int swi = 0;
+	_Bool flag = false;
 
 	for (int i = 1; i < 10; i++)
 	{
-		for (int j = i; j > 0; j--)
+		flag = false;
+		j = i - 1;
+		while (cnt1++, j >= 0 && p[i] < p[j])
 		{
-			if (p[j - 1] > p[j])
-			{
-				swi = p[j];
-				p[j] = p[j - 1];
-				p[j - 1] = swi;
-				cnt1++;
-				cnt2++;
-			}
-			else
-			{
-				cnt1++;
-				break;
-			}
-
+			j--;
+			flag = true;
 		}
+		swi = p[i];
+		for (int k = i - 1; k >= j + 1; k--)
+		{
+			p[k + 1] = p[k];
+			if (flag)
+				cnt2++;
+		}
+		p[j + 1] = swi;
+		if (flag)
+			cnt2++;
 	}
-
-	printf("%d %d ", cnt1, cnt2);
+	
+	printf("%d %d", cnt1, cnt2);
 }
 
 int main()
@@ -107,7 +104,6 @@ int main()
 	maopao(arr);
 	memcpy(arr, arr0, sizeof(arr0));
 	charu(arr);
-	printf("\b");
 
 	return 0;
 }
