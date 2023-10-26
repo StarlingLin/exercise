@@ -16,7 +16,7 @@ int main()
 	lp2 = x;
 
 	if (0 == n)
-		printf("1");
+		printf("%.2Lf", 1);
 	else if (1 == n)
 		printf("%.2Lf", x);
 	else
