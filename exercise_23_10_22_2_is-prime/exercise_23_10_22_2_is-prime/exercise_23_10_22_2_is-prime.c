@@ -8,7 +8,7 @@ _Bool IsPrime(int p)
 {
 	_Bool flag = true;
 
-	for (int i = 2; i <= sqrt(p); i++)
+	for (int i = 2; i <= sqrt(p); i++) //开根号节省计算资源
 		if (0 == p % i)
 		{
 			flag = false;
