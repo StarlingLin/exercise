@@ -30,4 +30,5 @@ void charu(int p[])//插入排序，打印比较次数和移动次数
 		if (flag)
 			cnt2++;
 	}
+	printf("%d %d", cnt1, cnt2);
 }
