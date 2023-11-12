@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
+#include <stdio.h>
 #include <stdbool.h>
 
 void sortofup(int s[], int n)/*n数组长度*/
@@ -17,4 +18,12 @@ void sortofup(int s[], int n)/*n数组长度*/
 				flag = true;
 			}
 	}
+}
+
+int main()
+{
+	int s[] = { 1,2,3,5,7,4,6 }, n = 7;
+	sortofup(s, n);
+	for (int i = 0; i < n; i++) printf("%d ", s[i]);
+	return 0;
 }
