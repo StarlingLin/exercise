@@ -2,17 +2,19 @@
 
 #include <stdio.h>
 
+int ret = 0;
+
 int SearchM(int arr[], int n)
 {
-	if (n >= 0)
+	if (n > 0)
 	{
-		if (arr[n] > SearchM(arr, n - 1))
+		if (arr[n] > (ret = SearchM(arr, n - 1)))
 			return arr[n];
 		else
-			return SearchM(arr, n - 1);
+			return ret;
 	}
 	else
-		return;
+		return 0;
 }
 
 int main()
