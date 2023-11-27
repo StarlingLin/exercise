@@ -12,7 +12,8 @@ int my_strlen(char arr[])
 
 int main()
 {
-	char ch[] = "114514abcdef !@#$";
+	char ch[100];
+	gets(ch);
 	printf("%d", my_strlen(ch));
 	return 0;
 }
