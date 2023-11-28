@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <assert.h>
 
-//int my_strlen(const char arr[])
+//size_t my_strlen(const char arr[])
 //{
 //	assert(arr);
 //	int i = 0;
@@ -12,10 +12,19 @@
 //	return i;
 //}
 
-int my_strlen(const char arr[])
+//size_t my_strlen(const char arr[])
+//{
+//	assert(arr);
+//	return *(arr) ? 1 + my_strlen(arr + 1) : 0;
+//}
+
+size_t my_strlen(const char arr[])
 {
 	assert(arr);
-	return *(arr) ? 1 + my_strlen(arr + 1) : 0;
+	char* p = arr;
+	while (*p)
+		p++;
+	return p - arr;
 }
 
 int main()
