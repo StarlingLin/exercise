@@ -3,13 +3,19 @@
 #include <stdio.h>
 #include <assert.h>
 
+//int my_strlen(const char arr[])
+//{
+//	assert(arr);
+//	int i = 0;
+//	while (*(arr + i))
+//		i++;
+//	return i;
+//}
+
 int my_strlen(const char arr[])
 {
 	assert(arr);
-	int i = 0;
-	while (*(arr + i))
-		i++;
-	return i;
+	return *(arr) ? 1 + my_strlen(arr + 1) : 0;
 }
 
 int main()
