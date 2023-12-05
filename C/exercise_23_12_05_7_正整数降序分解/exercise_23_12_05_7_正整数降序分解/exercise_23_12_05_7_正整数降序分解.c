@@ -2,46 +2,44 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
 
-int num;
-void print(int a[], int n)
+int n = 0;
+
+void print(int* a, int num)
 {
-	int i;
-	printf("%d=%d", num, a[0]);
-	for (i = 1; i <= n; i++) printf("+%d", a[i]);
+	printf("%d=%d", n, a[0]);
+	for (int i = 1; i < num + 1; i++)
+		printf("+%d", a[i]);
 	printf("\n");
-	return;
-}/*输出函数*/
-int check(int a[], int n)
-{
-	int i;
-	for (i = 0; i < n; i++)
-	{
-		if (a[i] < a[i + 1]) return 0;
-	}
-	return 1;
-}/*判断是否为降序*/
+}
 
-void lines(int n, int a[], int tot)
+_Bool isdown(int* a, int num)
 {
+	for (int i = 0; i < num; i++)
+		if (a[i] < a[i + 1])
+			return false;
+	return true;
+}
 
-	int i, j, k;
-	for (i = n - 1; i > 0; i--)
+void dec(const int n, int* a, int k)
+{
+	for (int i = n - 1; i > 0; i--)
 	{
-		j = n - i;
-		a[tot] = i; a[tot + 1] = j;/*将拆分的数存储到输出数组中*/
-		if (check(a, tot + 1)) print(a, tot + 1);
-		if (j > 1) {
-			lines(j, a, tot + 1);
-		}
+		a[k] = i, a[k + 1] = n - i;
+		if (isdown(a, k + 1))
+			print(a, k + 1);
+		if (n - i > 1)
+			dec(n - i, a, k + 1);
 	}
 }
 
 int main()
 {
-	scanf("%d", &num);
-	int* a = (int*)malloc(num*sizeof(int));
-	lines(num, a, 0);
+	scanf("%d", &n);
+	int* a = (int*)malloc(n * sizeof(int));
+	dec(n, a, 0);
 	return 0;
 }
 
