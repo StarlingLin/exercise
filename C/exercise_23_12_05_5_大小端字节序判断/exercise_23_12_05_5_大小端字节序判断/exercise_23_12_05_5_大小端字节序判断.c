@@ -10,6 +10,7 @@ int check_sys()
 
 int main()
 {
+	int a = 0x12345678;
 	if (check_sys())
 		printf("该机器为小端字节序机器\n");
 	else
