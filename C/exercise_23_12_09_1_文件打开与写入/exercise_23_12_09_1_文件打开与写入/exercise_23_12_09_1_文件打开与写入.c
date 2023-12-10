@@ -5,8 +5,14 @@
 int main()
 {
 	int a = 10000;
-	FILE* pf = fopen("abc.xyz", "wb");
-	fwrite(&a, 4, 1, pf);
+	FILE* pf = fopen("abc.txt", "w");
+	if (pf == NULL)
+	{
+		perror(fopen);
+		return 1;
+	}
+	for (int i = 0; i < 26; i++)
+		fputc('a' + i, pf);
 	fclose(pf);
 	pf = NULL;
 	return 0;
