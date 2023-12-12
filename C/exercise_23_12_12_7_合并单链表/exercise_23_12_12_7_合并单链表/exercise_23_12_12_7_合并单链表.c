@@ -48,6 +48,7 @@ struct cell* build(void)    //新建单链表，并将建好的单链表首结点地址返回
     }
     return head;    //返回单链表头
 }
+
 struct cell* combine(struct cell* p, struct cell* q)    //合并两个链表p和q
 {
     struct cell* head = NULL, * p0 = NULL, * q0 = NULL, * r = NULL;
@@ -96,6 +97,7 @@ struct cell* combine(struct cell* p, struct cell* q)    //合并两个链表p和q
     }
     return head;
 }
+
 void print(struct cell* head)   //打印整个单链表,head是单链表首结点指针
 {
     struct cell* p;
@@ -111,6 +113,7 @@ void print(struct cell* head)   //打印整个单链表,head是单链表首结点指针
 
     }
 }
+
 void release(struct cell* head) //释放单链表空间,head是单链表首结点指针
 {
     struct cell* p = head, * tmp;
