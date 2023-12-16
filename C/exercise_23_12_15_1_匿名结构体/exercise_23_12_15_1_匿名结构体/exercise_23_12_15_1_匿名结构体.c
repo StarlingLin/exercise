@@ -27,6 +27,6 @@ int main()
 {
 	//*p = &x;	//err
 	stct s_a = {.b = 1, .a = 3, .c = 2};
-
+	printf("%d %ld %f", s_a.a, s_a.b, s_a.c);
 	return 0;
 }
