@@ -2,10 +2,21 @@
 
 #include <stdio.h>
 
+//int check_sys()
+//{
+//	int i = 1;
+//	return *(char*)&i;
+//}
+
 int check_sys()
 {
-	int i = 1;
-	return *(char*)&i;
+	union
+	{
+		int i;
+		char c;
+	} u;
+	u.i = 1;
+	return u.c;
 }
 
 int main()
