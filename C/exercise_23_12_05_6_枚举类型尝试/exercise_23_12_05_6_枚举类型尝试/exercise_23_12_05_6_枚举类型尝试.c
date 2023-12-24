@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-enum Color
+enum 颜色
 {
 	RED = 4,
 	GREEN = 2,
@@ -21,7 +21,7 @@ int main()
 	int a = GREEN;
 	printf("%d = %d\n", a, GREEN);
 
-	enum Color clr = GREEN;
+	enum 颜色 clr = GREEN;
 	clr = 2;	//C:ok;C++:err	C++类型检查比较严格
 
 	enum ENUM_A
