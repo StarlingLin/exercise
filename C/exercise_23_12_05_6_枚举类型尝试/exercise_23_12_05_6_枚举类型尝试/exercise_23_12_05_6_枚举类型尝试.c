@@ -33,7 +33,7 @@ int main()
 		B1,
 	} enumB = B1, * penmB = &enumB;
 	enum ENUM_A enumA = Y1;
-	printf("%d %d\n", enumA, enumB);
+	printf("%d %d %x\n", enumA, enumB, penmB);
 
 	return 0;
 }
