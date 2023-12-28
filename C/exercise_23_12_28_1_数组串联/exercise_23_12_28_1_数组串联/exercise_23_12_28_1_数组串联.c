@@ -23,7 +23,9 @@ int* getConcatenation(int* nums, int numsSize, int* returnSize) {
 
 int main()
 {
-    int ret = 0, arr[5] = { 1,2,3,4,5 };
+    int ret = 0, * arr = (int*)malloc(5 * sizeof(int));
+    for (int i = 0; i < 5; i++)
+        arr[i] = i;
     int* num = getConcatenation(arr, 5, &ret);
     printf("num[%d] = {", ret);
     for (int i = 0; i < ret; i++)
