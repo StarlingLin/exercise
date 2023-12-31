@@ -8,7 +8,7 @@ int main()
 	int* p = (int*)calloc(10, sizeof(int));
 	if (p == NULL)
 	{
-		perror("malloc");
+		perror("calloc");
 		return 1;
 	}
 	for (int i = 0; i < 10; i++)
