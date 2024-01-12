@@ -24,6 +24,8 @@
 //        puts("End of file reached successfully");
 //
 //    fclose(fp);
+//    fp = NULL;
+//    return EXIT_SUCCESS;
 //}
 
 #include <stdio.h>
