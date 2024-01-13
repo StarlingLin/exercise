@@ -28,24 +28,34 @@
 //    return EXIT_SUCCESS;
 //}
 
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//int main(void)
+//{
+//    int ret_code = 0;
+//    for (char c = 'a'; (ret_code != EOF) && (c != 'z'); c++)
+//        ret_code = putc(c, stdout);
+//
+//    /* 测试是否抵达 EOF */
+//    if (ret_code == EOF)
+//        if (ferror(stdout))
+//        {
+//            perror("putc()");
+//            fprintf(stderr, "putc() failed in file %s at line # %d\n", __FILE__, __LINE__ - 7);
+//            exit(EXIT_FAILURE);
+//        }
+//    putc('\n', stdout);
+//
+//    return EXIT_SUCCESS;
+//}
+
 #include <stdio.h>
-#include <stdlib.h>
 
 int main(void)
 {
-    int ret_code = 0;
-    for (char c = 'a'; (ret_code != EOF) && (c != 'z'); c++)
-        ret_code = putc(c, stdout);
+    int rc = fputs("Hello world!", stdout);
 
-    /* 测试是否抵达 EOF */
-    if (ret_code == EOF)
-        if (ferror(stdout))
-        {
-            perror("putc()");
-            fprintf(stderr, "putc() failed in file %s at line # %d\n", __FILE__, __LINE__ - 7);
-            exit(EXIT_FAILURE);
-        }
-    putc('\n', stdout);
-
-    return EXIT_SUCCESS;
+    if (rc == EOF)
+        perror("fputs()"); // POSIX 要求设置 errno
 }
