@@ -50,12 +50,44 @@
 //    return EXIT_SUCCESS;
 //}
 
+//#include <stdio.h>
+//
+//int main(void)
+//{
+//    int rc = fputs("Hello world!", stdout);
+//
+//    if (rc == EOF)
+//        perror("fputs()"); // POSIX 要求设置 errno
+//}
+
 #include <stdio.h>
+#include <stdlib.h>
 
-int main(void)
+struct Stu
 {
-    int rc = fputs("Hello world!", stdout);
+	char name[20];
+	int age;
+	float score;
+};
 
-    if (rc == EOF)
-        perror("fputs()"); // POSIX 要求设置 errno
+int main()
+{
+	struct Stu s = { "zhangsan", 20, 99.9 };
+	struct Stu d = { 0 };
+
+	FILE* pf = fopen("dat.txt", "w+b");
+	if (!pf)
+	{
+		perror("fopen");
+		return EXIT_FAILURE;
+	}
+
+	fwrite(&s, sizeof(s), 1, pf);
+	fseek(pf, 0, SEEK_SET);
+	fread(&d, sizeof(s), 1, pf);
+	printf("%s %d %.1f", d.name, d.age, d.score);
+	
+	fclose(pf);
+	pf = NULL;
+	return EXIT_SUCCESS;
 }
