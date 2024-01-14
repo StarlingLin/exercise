@@ -60,34 +60,34 @@
 //        perror("fputs()"); // POSIX “™«Û…Ë÷√ errno
 //}
 
-#include <stdio.h>
-#include <stdlib.h>
-
-struct Stu
-{
-	char name[20];
-	int age;
-	float score;
-};
-
-int main()
-{
-	struct Stu s = { "zhangsan", 20, 99.9 };
-	struct Stu d = { 0 };
-
-	FILE* pf = fopen("dat.txt", "w+b");
-	if (!pf)
-	{
-		perror("fopen");
-		return EXIT_FAILURE;
-	}
-
-	fwrite(&s, sizeof(s), 1, pf);
-	fseek(pf, 0, SEEK_SET);
-	fread(&d, sizeof(s), 1, pf);
-	printf("%s %d %.1f", d.name, d.age, d.score);
-	
-	fclose(pf);
-	pf = NULL;
-	return EXIT_SUCCESS;
-}
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//struct Stu
+//{
+//	char name[20];
+//	int age;
+//	float score;
+//};
+//
+//int main()
+//{
+//	struct Stu s = { "zhangsan", 20, 99.9 };
+//	struct Stu d = { 0 };
+//
+//	FILE* pf = fopen("dat.txt", "w+b");
+//	if (!pf)
+//	{
+//		perror("fopen");
+//		return EXIT_FAILURE;
+//	}
+//
+//	fwrite(&s, sizeof(s), 1, pf);
+//	fseek(pf, 0, SEEK_SET);
+//	fread(&d, sizeof(s), 1, pf);
+//	printf("%s %d %.1f", d.name, d.age, d.score);
+//	
+//	fclose(pf);
+//	pf = NULL;
+//	return EXIT_SUCCESS;
+//}
