@@ -1,1 +1,6 @@
-int a = 114514;
+void test();
+struct s
+{
+    int a;
+    int b;
+};
