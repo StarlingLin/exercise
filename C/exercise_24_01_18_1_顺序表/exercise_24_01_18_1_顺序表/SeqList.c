@@ -219,7 +219,7 @@ void SLSwapByPos(SL* psl, int pos1, int pos2)
 }
 
 //ц╟ещеепР
-void BubbleSort(SL* psl)
+void SLBubbleSort(SL* psl)
 {
 	//╤оят
 	assert(psl);

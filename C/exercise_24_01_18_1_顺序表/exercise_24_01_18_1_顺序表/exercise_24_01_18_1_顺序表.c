@@ -33,6 +33,29 @@ void SLTest01()
 	SLPopFront(&sl);
 	SLPopFront(&sl);
 
+	//≤‚ ‘»Œ“‚Œª÷√≤Â»Î
+	SLInsert(&sl, 0, 1);
+	SLInsert(&sl, 0, 2);
+	SLInsert(&sl, 2, 3);
+	SLInsert(&sl, 1, 4);
+	SLInsert(&sl, 3, 5);
+
+	//≤‚ ‘»Œ“‚Œª÷√…æ≥˝
+	SLRemove(&sl, 4);
+
+	//≤‚ ‘≤È’“
+	int pos = SLFind(&sl, 3);
+	printf("pos = %d\n", pos);
+	SLDataType x = SLFindByPos(&sl, 2);
+	printf("x = %d\n", x);
+
+	//≤‚ ‘–ﬁ∏ƒ
+	SLModify(&sl, 2, 6);
+
+	//≤‚ ‘√∞≈›≈≈–Ú
+	SLBubbleSort(&sl);
+
+	//≤‚ ‘¥Ú”°
 	SLPrint(&sl);
 
 	SLDestory(&sl);

@@ -64,4 +64,4 @@ void SLModifyByPos(SL* psl, int pos, SLDataType x);
 void SLSwapByPos(SL* psl, int pos1, int pos2);
 
 //ц╟ещеепР
-void BubbleSort(SL* psl);
+void SLBubbleSort(SL* psl);
