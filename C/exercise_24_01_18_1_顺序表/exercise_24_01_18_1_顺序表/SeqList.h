@@ -2,6 +2,8 @@
 
 #pragma once
 #include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
 
 typedef int SLDataType;
 
@@ -26,8 +28,13 @@ typedef struct SeqList
 void SLInit(SL* psl);
 //销毁
 void SLDestory(SL* psl);
+//打印顺序表
+void SLPrint(SL* psl);
 
-//插入与删除
+//扩容顺序表
+void SLCheckCapacity(SL* psl);
+
+//头部/尾部插入与删除
 //头部插入
 void SLPushBack(SL* psl, SLDataType x);
 //头部删除
@@ -36,3 +43,25 @@ void SLPopBack(SL* psl);
 void SLPushFront(SL* psl, SLDataType x);
 //尾部删除
 void SLPopFront(SL* psl);
+
+//任意位置插入与删除
+//任意位置插入
+void SLInsert(SL* psl, int pos, SLDataType x);
+//任意位置删除
+void SLRemove(SL* psl, int pos);
+
+//查找
+//查找某个元素对应的下标
+int SLFind(SL* psl, SLDataType x);
+//查找某个下标对应的元素
+SLDataType SLFindByPos(SL* psl, int pos);
+
+//修改
+//修改某个下标对应的元素
+void SLModifyByPos(SL* psl, int pos, SLDataType x);
+
+//根据下标交换两个元素
+void SLSwapByPos(SL* psl, int pos1, int pos2);
+
+//冒泡排序
+void BubbleSort(SL* psl);
