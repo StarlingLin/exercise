@@ -50,7 +50,7 @@ void SLTest01()
 	printf("x = %d\n", x);
 
 	//≤‚ ‘–ﬁ∏ƒ
-	SLModify(&sl, 2, 6);
+	SLModifyByPos(&sl, 2, 6);
 
 	//≤‚ ‘√∞≈›≈≈–Ú
 	SLBubbleSort(&sl);
