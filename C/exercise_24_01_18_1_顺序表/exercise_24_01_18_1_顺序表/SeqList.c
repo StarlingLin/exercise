@@ -187,7 +187,7 @@ SLDataType SLFindByPos(SL* psl, int pos)
 
 //修改
 //修改某个下标对应的元素
-void SLModify(SL* psl, int pos, SLDataType x)
+void SLModifyByPos(SL* psl, int pos, SLDataType x)
 {
 	//断言
 	assert(psl);
