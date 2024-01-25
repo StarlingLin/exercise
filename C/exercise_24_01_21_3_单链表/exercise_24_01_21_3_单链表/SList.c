@@ -374,3 +374,48 @@ void SListBubbleSort(SListNode** pList)
 		}
 	}
 }
+
+//单链表合并
+SListNode* SListMerge(SListNode* pList1, SListNode* pList2)
+{
+	//断言
+	assert(pList1&&pList2);
+	SListNode* newList = NULL;
+	SListNode* cur1 = pList1;
+	SListNode* cur2 = pList2;
+	SListNode* cur = NULL;
+	if (cur1->data < cur2->data)
+	{
+		newList = cur1;
+		cur1 = cur1->next;
+	}
+	else
+	{
+		newList = cur2;
+		cur2 = cur2->next;
+	}
+	cur = newList;
+	while (cur1 && cur2)
+	{
+		if (cur1->data < cur2->data)
+		{
+			cur->next = cur1;
+			cur1 = cur1->next;
+		}
+		else
+		{
+			cur->next = cur2;
+			cur2 = cur2->next;
+		}
+		cur = cur->next;
+	}
+	if (cur1)
+	{
+		cur->next = cur1;
+	}
+	else
+	{
+		cur->next = cur2;
+	}
+	return newList;
+}

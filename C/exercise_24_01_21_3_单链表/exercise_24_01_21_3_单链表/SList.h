@@ -65,3 +65,6 @@ void SListReverse(SListNode** ppList);
 
 //单链表冒泡排序
 void SListBubbleSort(SListNode** pList);
+
+//合并两个有序链表
+SListNode* SListMerge(SListNode* pList1, SListNode* pList2);
