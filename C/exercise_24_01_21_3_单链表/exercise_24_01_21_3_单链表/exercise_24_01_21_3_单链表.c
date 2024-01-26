@@ -5,6 +5,7 @@
 int main()	//测试代码
 {
 	SListInit(node);	//单链表的初始化
+	SListInit(node2);
 	SListPushBack(&node, 1);	//1->NULL
 	SListPushBack(&node, 2);	//1->2->NULL
 	SListPushBack(&node, 3);	//1->2->3->NULL
@@ -37,6 +38,13 @@ int main()	//测试代码
 	SListPrint(node);
 	SListBubbleSort(&node);	//2->5->8->NULL
 	SListPrint(node);
+	SListPushBack(&node2, 1);	//1->NULL
+	SListPushBack(&node2, 2);	//1->2->NULL
+	SListPushBack(&node2, 3);	//1->2->3->NULL
+	SListPushBack(&node2, 4);	//1->2->3->4->NULL
+	SListPushBack(&node2, 5);	//1->2->3->4->5->NULL
+	SListMerge(&node, &node2);	//1->2->2->3->3->4->5->8->NULL
+	SListPrint(node2);
 
 	SListNode* FindRet = SListFind(node, 3);
 	if (FindRet)
