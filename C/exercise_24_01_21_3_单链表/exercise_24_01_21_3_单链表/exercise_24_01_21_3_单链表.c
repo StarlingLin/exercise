@@ -44,7 +44,7 @@ int main()	//≤‚ ‘¥˙¬Î
 	SListPushBack(&node2, 4);	//1->2->3->4->NULL
 	SListPushBack(&node2, 5);	//1->2->3->4->5->NULL
 	SListMerge(&node, &node2);	//1->2->2->3->3->4->5->8->NULL
-	SListPrint(node2);
+	SListPrint(node2); 
 
 	SListNode* FindRet = SListFind(node, 3);
 	if (FindRet)
@@ -57,7 +57,7 @@ int main()	//≤‚ ‘¥˙¬Î
 	}
 
 	SListDestory(&node);
-
+	SListDestory(&node2);
 
 	return 0;
 }
