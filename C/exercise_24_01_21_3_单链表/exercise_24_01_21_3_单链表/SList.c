@@ -376,65 +376,56 @@ void SListBubbleSort(SListNode** pList)
 }
 
 //单链表合并
-SListNode* SListMerge(SListNode** pList1, SListNode** pList2)
+SListNode* SListMerge(SListNode* pList1, SListNode* pList2)
 {
-	//断言
-	assert(pList1&&pList2);
-	if (*pList1 == NULL)
+	if (!pList1)
 	{
-		return *pList2;
+		return pList2;
 	}
-	else if (*pList2 == NULL)
+	if (!pList2)
 	{
-		return *pList1;
+		return pList1;
 	}
-	else
+	SListNode* newList = NULL;
+	SListNode* cur1 = pList1;
+	SListNode* cur2 = pList2;
+	SListNode* cur = NULL;
+	while (cur1 && cur2)
 	{
-		SListNode* cur1 = *pList1;
-		SListNode* cur2 = *pList2;
-		SListNode* newList = NULL;
-		SListNode* newTail = NULL;
-		while (cur1 && cur2)
+		if (cur1->data < cur2->data)
 		{
-			if (cur1->data < cur2->data)
+			if (!newList)
 			{
-				if (newList == NULL)
-				{
-					newList = cur1;
-					newTail = cur1;
-					cur1 = cur1->next;
-				}
-				else
-				{
-					newTail->next = cur1;
-					newTail = cur1;
-					cur1 = cur1->next;
-				}
+				newList = cur = cur1;
 			}
 			else
 			{
-				if (newList == NULL)
-				{
-					newList = cur2;
-					newTail = cur2;
-					cur2 = cur2->next;
-				}
-				else
-				{
-					newTail->next = cur2;
-					newTail = cur2;
-					cur2 = cur2->next;
-				}
+				cur->next = cur1;
+				cur = cur->next;
 			}
-		}
-		if (cur1)
-		{
-			newTail->next = cur1;
+			cur1 = cur1->next;
 		}
 		else
 		{
-			newTail->next = cur2;
+			if (!newList)
+			{
+				newList = cur = cur2;
+			}
+			else
+			{
+				cur->next = cur2;
+				cur = cur->next;
+			}
+			cur2 = cur2->next;
 		}
-		return newList;
 	}
+	if (cur1)
+	{
+		cur->next = cur1;
+	}
+	else
+	{
+		cur->next = cur2;
+	}
+	return newList;
 }

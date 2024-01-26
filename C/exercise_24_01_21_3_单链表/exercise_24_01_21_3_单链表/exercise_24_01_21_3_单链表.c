@@ -6,6 +6,7 @@ int main()	//测试代码
 {
 	SListInit(node);	//单链表的初始化
 	SListInit(node2);
+	SListInit(node_m);
 	SListPushBack(&node, 1);	//1->NULL
 	SListPushBack(&node, 2);	//1->2->NULL
 	SListPushBack(&node, 3);	//1->2->3->NULL
@@ -43,8 +44,9 @@ int main()	//测试代码
 	SListPushBack(&node2, 3);	//1->2->3->NULL
 	SListPushBack(&node2, 4);	//1->2->3->4->NULL
 	SListPushBack(&node2, 5);	//1->2->3->4->5->NULL
-	SListMerge(&node, &node2);	//1->2->2->3->3->4->5->8->NULL
-	SListPrint(node2); 
+	SListPrint(node2);
+	node_m = SListMerge(node, node2);	//1->2->2->3->3->4->5->8->NULL
+	SListPrint(node_m); 
 
 	SListNode* FindRet = SListFind(node, 3);
 	if (FindRet)
@@ -57,7 +59,6 @@ int main()	//测试代码
 	}
 
 	SListDestory(&node);
-	SListDestory(&node2);
 
 	return 0;
 }
