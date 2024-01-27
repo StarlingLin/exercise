@@ -3,16 +3,32 @@
 #include "List.h"
 
 //初始化链表
-void ListInit(ListNode** pphead)
+ListNode* ListInit(void)
 {
-	//断言
-	assert(pphead);
-	*pphead = (ListNode*)malloc(sizeof(ListNode));
-	if (*pphead == NULL)
+	ListNode* phead = (ListNode*)malloc(sizeof(ListNode));
+	if (phead == NULL)
 	{
 		perror("malloc");
 		exit(EXIT_FAILURE);
 	}
-	(*pphead)->next = NULL;
-	(*pphead)->prev = NULL;
+	phead->next = phead->prev = phead;
+	return phead;
 }
+//销毁链表
+void ListDestory(ListNode** pphead)
+{
+	if (pphead == NULL)
+	{
+		return;
+	}
+	ListNode* phead = *pphead;
+	ListNode* cur = phead->next;
+	while (cur != phead)
+	{
+		ListNode* next = cur->next;
+		free(cur);
+		cur = next;
+	}
+	free(phead);
+	*pphead = NULL;
+} 

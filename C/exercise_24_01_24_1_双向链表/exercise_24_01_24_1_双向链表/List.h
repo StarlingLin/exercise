@@ -18,6 +18,7 @@ typedef struct ListNode
 } ListNode;
 
 //初始化链表
-void ListInit(ListNode** pphead);
+ListNode* ListInit(void);
 //销毁链表
 void ListDestory(ListNode** pphead);
+

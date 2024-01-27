@@ -4,8 +4,8 @@
 
 int main()
 {
-	ListNode* plist = NULL;
-	ListInit(&plist);
+	ListNode* plist = ListInit();
+
 
 	return 0;
 }
