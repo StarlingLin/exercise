@@ -22,3 +22,7 @@ ListNode* ListInit(void);
 //Ïú»ÙÁ´±í
 void ListDestory(ListNode** pphead);
 
+//Î²²å
+void ListPushBack(ListNode* phead, LTDataType x);
+//Í·²å
+void ListPushFront(ListNode* phead, LTDataType x);

@@ -32,3 +32,22 @@ void ListDestory(ListNode** pphead)
 	free(phead);
 	*pphead = NULL;
 } 
+
+//Î²²å
+void ListPushBack(ListNode * phead, LTDataType x)
+{
+	//¶ÏÑÔ
+	assert(phead);
+	ListNode* tail = phead->prev;
+	ListNode* newnode = (ListNode*)malloc(sizeof(ListNode));
+	if (newnode == NULL)
+	{
+		perror("malloc");
+		exit(EXIT_FAILURE);
+	}
+	newnode->data = x;
+	newnode->next = phead;
+	newnode->prev = tail;
+	tail->next = newnode;
+	phead->prev = newnode;
+})
