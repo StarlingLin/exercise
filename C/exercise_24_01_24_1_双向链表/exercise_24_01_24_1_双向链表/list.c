@@ -26,7 +26,9 @@ ListNode* ListInit(void)
 //Ïú»ÙÁ´±í
 void ListDestory(ListNode** pphead)
 {
-	if (pphead == NULL)
+	//¶ÏÑÔ
+	assert(pphead);
+	if (*pphead == NULL)
 	{
 		return;
 	}
