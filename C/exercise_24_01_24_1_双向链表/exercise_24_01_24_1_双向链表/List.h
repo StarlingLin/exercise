@@ -32,3 +32,16 @@ void ListPrint(ListNode* phead);
 void ListPushBack(ListNode* phead, LTDataType x);
 //头插
 void ListPushFront(ListNode* phead, LTDataType x);
+
+//尾删
+void ListPopBack(ListNode* phead);
+//头删
+void ListPopFront(ListNode* phead);
+
+//查找
+ListNode* ListFind(ListNode* phead, LTDataType x);
+
+//在pos位置之后插入x
+void ListInsert(ListNode* pos, LTDataType x);
+//删除pos位置的节点
+void ListErase(ListNode* pos);

@@ -72,5 +72,73 @@ void ListPushBack(ListNode * phead, LTDataType x)
 //Í·²å
 void ListPushFront(ListNode* phead, LTDataType x)
 {
+	//¶ÏÑÔ
+	ListNode* newnode = BuyListNode(x);
+	newnode->next = phead->next;
+	newnode->prev = phead;
+	phead->next->prev = newnode;
+	phead->next = newnode;
+}
 
+//Î²É¾
+void ListPopBack(ListNode* phead)
+{
+	//¶ÏÑÔ
+	assert(phead);
+	ListNode* tail = phead->prev;
+	ListNode* prev = tail->prev;
+	prev->next = phead;
+	phead->prev = prev;
+	free(tail);
+}
+//Í·É¾
+void ListPopFront(ListNode* phead)
+{
+	//¶ÏÑÔ
+	assert(phead);
+	ListNode* first = phead->next;
+	ListNode* second = first->next;
+	phead->next = second;
+	second->prev = phead;
+	free(first);
+}
+
+//²éÕÒ
+ListNode* ListFind(ListNode* phead, LTDataType x)
+{
+	//¶ÏÑÔ
+	assert(phead);
+	ListNode* cur = phead->next;
+	while (cur != phead)
+	{
+		if (cur->data == x)
+		{
+			return cur;
+		}
+		cur = cur->next;
+	}
+	return NULL;
+}
+
+//ÔÚposÎ»ÖÃÖ®ºó²åÈëx
+void ListInsert(ListNode* pos, LTDataType x)
+{
+	//¶ÏÑÔ
+	assert(pos);
+	ListNode* newnode = BuyListNode(x);
+	newnode->next = pos->next;
+	newnode->prev = pos;
+	pos->next->prev = newnode;
+	pos->next = newnode;
+}
+//É¾³ýposÎ»ÖÃµÄ½Úµã
+void ListErase(ListNode* pos)
+{
+	//¶ÏÑÔ
+	assert(pos);
+	ListNode* prev = pos->prev;
+	ListNode* next = pos->next;
+	prev->next = next;
+	next->prev = prev;
+	free(pos);
 }
