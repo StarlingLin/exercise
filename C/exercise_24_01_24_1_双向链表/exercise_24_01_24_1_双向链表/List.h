@@ -17,10 +17,16 @@ typedef struct ListNode
 	struct ListNode* prev;
 } ListNode;
 
+//申请节点
+ListNode* BuyListNode(LTDataType x);
+
 //初始化链表
 ListNode* ListInit(void);
 //销毁链表
 void ListDestory(ListNode** pphead);
+
+//打印
+void ListPrint(ListNode* phead);
 
 //尾插
 void ListPushBack(ListNode* phead, LTDataType x);

@@ -1,16 +1,25 @@
-#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNING
 
 #include "List.h"
 
-//初始化链表
-ListNode* ListInit(void)
+//申请节点
+ListNode* BuyListNode(LTDataType x)
 {
-	ListNode* phead = (ListNode*)malloc(sizeof(ListNode));
-	if (phead == NULL)
+	ListNode* newnode = (ListNode*)malloc(sizeof(ListNode));
+	if (newnode == NULL)
 	{
 		perror("malloc");
 		exit(EXIT_FAILURE);
 	}
+	newnode->data = x;
+	newnode->next = newnode->prev = NULL;
+	return newnode;
+}
+
+//初始化链表
+ListNode* ListInit(void)
+{
+	ListNode* phead = BuyListNode((LTDataType)0);
 	phead->next = phead->prev = phead;
 	return phead;
 }
@@ -33,21 +42,35 @@ void ListDestory(ListNode** pphead)
 	*pphead = NULL;
 } 
 
+//打印
+void ListPrint(ListNode* phead)
+{
+	//断言
+	assert(phead);
+	ListNode* cur = phead->next;
+	printf("head->");
+	while (cur != phead)
+	{
+		printf("%d->", cur->data);
+		cur = cur->next;
+	}
+	printf("tail\n");
+}
+
 //尾插
 void ListPushBack(ListNode * phead, LTDataType x)
 {
 	//断言
 	assert(phead);
 	ListNode* tail = phead->prev;
-	ListNode* newnode = (ListNode*)malloc(sizeof(ListNode));
-	if (newnode == NULL)
-	{
-		perror("malloc");
-		exit(EXIT_FAILURE);
-	}
-	newnode->data = x;
+	ListNode* newnode = BuyListNode(x);
 	newnode->next = phead;
 	newnode->prev = tail;
 	tail->next = newnode;
 	phead->prev = newnode;
-})
+}
+//头插
+void ListPushFront(ListNode* phead, LTDataType x)
+{
+
+}
