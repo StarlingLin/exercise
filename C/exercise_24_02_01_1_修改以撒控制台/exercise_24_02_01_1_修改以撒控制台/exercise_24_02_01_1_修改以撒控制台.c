@@ -88,6 +88,6 @@ int main()
 	free(filename);	// 释放内存
 	free(str);	// 释放内存
 
-
+	system("pause");
 	return 0;
 }
