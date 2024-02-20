@@ -11,3 +11,12 @@ int missingNumber(int* nums, int numsSize)
 	}
 	return (numsSize + 1) * numsSize / 2 - sum;
 }
+
+int main()
+{
+	int nums[] = { 3, 0, 1 };
+	int numsSize = sizeof(nums) / sizeof(nums[0]);
+	printf("%d\n", missingNumber(nums, numsSize));
+	system("pause");
+	return 0;
+}
