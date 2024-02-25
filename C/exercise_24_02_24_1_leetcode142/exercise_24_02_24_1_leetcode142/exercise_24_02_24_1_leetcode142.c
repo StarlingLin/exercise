@@ -32,3 +32,26 @@ struct ListNode *detectCycle(struct ListNode *head)
 	}
 	return NULL;
 }
+
+int main()
+{
+	struct ListNode *head = (struct ListNode *)malloc(sizeof(struct ListNode));
+	head->val = 3;
+	head->next = (struct ListNode *)malloc(sizeof(struct ListNode));
+	head->next->val = 2;
+	head->next->next = (struct ListNode *)malloc(sizeof(struct ListNode));
+	head->next->next->val = 0;
+	head->next->next->next = (struct ListNode *)malloc(sizeof(struct ListNode));
+	head->next->next->next->val = -4;
+	head->next->next->next->next = head->next;
+
+	struct ListNode *result = detectCycle(head);
+	printf("%d\n", result->val);
+
+	free(head->next->next->next);
+	free(head->next->next);
+	free(head->next);
+	free(head);
+
+	return 0;
+}
