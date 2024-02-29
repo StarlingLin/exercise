@@ -11,30 +11,29 @@ struct ListNode
 
 struct ListNode* FindKthToTail(struct ListNode* pListHead, int k)
 {
-    if (pListHead == NULL || k <= 0)
+	if (pListHead == NULL || k <= 0)
 	{
 		return NULL;
 	}
-	struct ListNode* pa = pListHead;
-	struct ListNode* pb = pListHead;
-	for (int i = 0; i < k - 1; i++)
+	struct ListNode* pfront = pListHead;
+	struct ListNode* pback = pListHead;
+	for (int i = 0; i < k - 1; ++i)
 	{
-		if (pa->next != NULL)
-		{
-			pa = pa->next;
-		}
-		else
+		if (pfront->next == NULL)
 		{
 			return NULL;
 		}
+		pfront = pListHead->next;
 	}
-	while (pa->next != NULL)
+	while (pfront->next != NULL)
 	{
-		pa = pa->next;
-		pb = pb->next;
+		pfront = pfront->next;
+		pback = pback->next;
 	}
-	return pb;
+	return pback;
 }
+
+
 
 int main()
 {
@@ -57,3 +56,33 @@ int main()
 	printf("%d\n", p->val);
 	return 0;
 }
+
+
+//ANS
+// 
+//struct ListNode* FindKthToTail(struct ListNode* pListHead, int k)
+//{
+//	if (pListHead == NULL || k <= 0)
+//	{
+//		return NULL;
+//	}
+//	struct ListNode* pa = pListHead;
+//	struct ListNode* pb = pListHead;
+//	for (int i = 0; i < k - 1; i++)
+//	{
+//		if (pa->next != NULL)
+//		{
+//			pa = pa->next;
+//		}
+//		else
+//		{
+//			return NULL;
+//		}
+//	}
+//	while (pa->next != NULL)
+//	{
+//		pa = pa->next;
+//		pb = pb->next;
+//	}
+//	return pb;
+//}
