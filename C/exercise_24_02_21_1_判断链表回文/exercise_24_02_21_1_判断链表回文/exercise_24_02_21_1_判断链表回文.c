@@ -48,7 +48,6 @@ if (head == NULL || head->next == NULL)
 		p2 = p2->next;
 	}
 	return true;
-
 }
 
 int main()
@@ -67,3 +66,43 @@ int main()
 	printf("%s\n", isPalindrome(head) ? "true" : "false");
 	return 0;
 }
+
+//ANS
+
+//bool isPalindrome(ListNode* head)
+//{
+//	if (head == NULL || head->next == NULL)
+//	{
+//		return true;
+//	}
+//	ListNode* slow = head;
+//	ListNode* fast = head;
+//	while (fast->next != NULL && fast->next->next != NULL)
+//	{
+//		slow = slow->next;
+//		fast = fast->next->next;
+//	}
+//	ListNode* pre = slow;
+//	ListNode* cur = slow->next;
+//	ListNode* temp;
+//	while (cur->next != NULL)
+//	{
+//		temp = cur->next;
+//		cur->next = temp->next;
+//		temp->next = pre->next;
+//		pre->next = temp;
+//	}
+//	ListNode* p1 = head;
+//	ListNode* p2 = pre->next;
+//	while (p1 != NULL && p2 != NULL)
+//	{
+//		if (p1->val != p2->val)
+//		{
+//			return false;
+//		}
+//		p1 = p1->next;
+//		p2 = p2->next;
+//	}
+//	return true;
+//
+//}
