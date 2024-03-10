@@ -9,6 +9,7 @@ struct ListNode
 	struct ListNode* next;
 };
 
+//各自遍历一遍，如果有交点，最后一定会相遇并且相遇在交点，如果没有交点，最后一定会同时为NULL
 struct ListNode* getIntersectionNode(struct ListNode* headA, struct ListNode* headB)
 {
 	struct ListNode* pA = headA;
