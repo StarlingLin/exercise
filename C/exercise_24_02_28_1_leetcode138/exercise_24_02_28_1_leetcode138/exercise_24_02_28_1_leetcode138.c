@@ -11,6 +11,9 @@ struct Node
 };
 
 //节点拆分
+// 1.将每个节点复制一份，放在原节点的后面
+// 2.将每个节点的random指向复制节点的random
+// 3.将链表拆分成两个链表
 struct Node* copyRandomList1(struct Node* head) 
 {
     if (head == NULL) 
