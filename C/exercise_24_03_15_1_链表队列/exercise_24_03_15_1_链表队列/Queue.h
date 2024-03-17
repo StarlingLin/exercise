@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdlib.h>
 #include <stdbool.h>
 
 //队列数据类型
@@ -16,6 +17,7 @@ typedef struct Queue
 {
 	QueueNode* _front;
 	QueueNode* _rear;
+	int _size;
 } Queue;
 
 //队列的初始化
