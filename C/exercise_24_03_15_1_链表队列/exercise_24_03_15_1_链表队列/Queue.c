@@ -33,6 +33,8 @@ void QueuePush(Queue* pq, QueueData x)
 	{
 		pq->_front = pq->_rear = new;
 	}
+
+	pq->_size++;
 }
 //出队
 void QueuePop(Queue* pq)
@@ -45,24 +47,35 @@ void QueuePop(Queue* pq)
 	QueueNode* head = pq->_front->_next;
 	free(pq->_front);
 	pq->_front = head;
+
 	pq->_size--;
 }
 //队列头
 QueueData QueueFront(Queue* pq)
 {
 	assert(pq);
+	assert(pq->_front);
 	return pq->_front->_data;
 }
 //队列尾
 QueueData QueueBack(Queue* pq)
 {
 	assert(pq);
+	assert(pq->_rear); 
 	return pq->_rear->_data;
 }
 //队列长
-int QueueSize(Queue* pq);
+int QueueSize(Queue* pq)
+{
+	assert(pq);
+	return pq->_size;
+}
 //队列判空
-_Bool QueueEmpty(Queue* pq);
+_Bool QueueEmpty(Queue* pq)
+{
+	assert(pq);
+	return pq->_size == 0;
+}
 //队列销毁
 void QueueDestory(Queue* pq)
 {
