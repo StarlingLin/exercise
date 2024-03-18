@@ -11,13 +11,54 @@ void QueueInit(Queue* pq)
 	pq->_size = 0;
 }
 //入队
-void QueuePush(Queue* pq, QueueData x);
+void QueuePush(Queue* pq, QueueData x)
+{
+	assert(pq);
+	QueueNode* new = (QueueNode*)malloc(sizeof(QueueNode));
+	if (new == NULL)
+	{
+		perror("malloc");
+		exit(EXIT_FAILURE);
+	}
+
+	new->_data = x;
+	new->_next = NULL;
+
+	if (pq->_rear)
+	{
+		pq->_rear->_next = new;
+		pq->_rear = new;
+	}
+	else
+	{
+		pq->_front = pq->_rear = new;
+	}
+}
 //出队
-void QueuePop(Queue* pq);
+void QueuePop(Queue* pq)
+{
+	assert(pq);
+	if (pq->_front == NULL)
+	{
+		return;
+	}
+	QueueNode* head = pq->_front->_next;
+	free(pq->_front);
+	pq->_front = head;
+	pq->_size--;
+}
 //队列头
-QueueData QueueFront(Queue* pq);
+QueueData QueueFront(Queue* pq)
+{
+	assert(pq);
+	return pq->_front->_data;
+}
 //队列尾
-QueueData QueueBack(Queue* pq);
+QueueData QueueBack(Queue* pq)
+{
+	assert(pq);
+	return pq->_rear->_data;
+}
 //队列长
 int QueueSize(Queue* pq);
 //队列判空

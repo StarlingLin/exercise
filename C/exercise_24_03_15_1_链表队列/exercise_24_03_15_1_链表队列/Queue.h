@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 #include <stdbool.h>
+#include <assert.h>
 
 //队列数据类型
 #define QueueData int
