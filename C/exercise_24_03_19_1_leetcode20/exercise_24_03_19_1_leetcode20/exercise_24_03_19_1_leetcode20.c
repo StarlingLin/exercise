@@ -36,6 +36,10 @@ void StackPush(Stack* st, char data)
 
 char StackPop(Stack* st)
 {
+    if (st->top == 0)
+	{
+		return '\0';
+	}
     char ret = st->data[st->top - 1];
     st->top--;
     return ret;
@@ -57,13 +61,18 @@ bool isValid(char* s) {
             char get = StackPop(&st);
             if (!(get == '(' && *temp == ')') &&
                 !(get == '[' && *temp == ']') && 
-                !(get == '{' && *temp == '}'))
+                !(get == '{' && *temp == '}') ||
+                get == '\0')
             {
                 return false;
             }
         }
         temp++;
     }
+    if (st.top != 0)
+	{
+		return false;
+	}
     return true;
 }
 
