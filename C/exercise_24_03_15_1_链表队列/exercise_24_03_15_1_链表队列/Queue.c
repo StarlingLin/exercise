@@ -44,10 +44,17 @@ void QueuePop(Queue* pq)
 	{
 		return;
 	}
-	QueueNode* head = pq->_front->_next;
-	free(pq->_front);
-	pq->_front = head;
-
+	if (pq->_front->_next == NULL)
+	{
+		free(pq->_front);
+		pq->_front = pq->_rear = NULL;
+	}
+	else
+	{
+		QueueNode* head = pq->_front->_next;
+		free(pq->_front);
+		pq->_front = head;
+	}
 	pq->_size--;
 }
 //∂”¡–Õ∑
