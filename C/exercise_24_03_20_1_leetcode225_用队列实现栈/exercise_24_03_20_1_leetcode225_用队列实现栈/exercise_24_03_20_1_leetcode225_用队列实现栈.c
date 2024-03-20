@@ -64,10 +64,17 @@ void QueuePop(Queue* pq)
 	{
 		return;
 	}
-	QueueNode* head = pq->_front->_next;
-	free(pq->_front);
-	pq->_front = head;
-
+	if (pq->_front->_next == NULL)
+	{
+		free(pq->_front);
+		pq->_front = pq->_rear = NULL;
+	}
+	else
+	{
+		QueueNode* head = pq->_front->_next;
+		free(pq->_front);
+		pq->_front = head;
+	}
 	pq->_size--;
 }
 //¶ÓÁÐÍ·
@@ -162,13 +169,13 @@ int myStackPop(MyStack* obj)
 }
 
 int myStackTop(MyStack* obj) {
-	if (QueueEmpty(&obj->q1))
+	if (!QueueEmpty(&obj->q1))
 	{
-		return QueueBack(&obj->q2);
+		return QueueBack(&obj->q1);
 	}
 	else
 	{
-		return QueueBack(&obj->q1);
+		return QueueBack(&obj->q2);
 	}
 }
 
@@ -184,25 +191,15 @@ void myStackFree(MyStack* obj)
 	free(obj);
 }
 
+//["MyStack","push","pop","push","top"]
 int main()
 {
 	MyStack* obj = myStackCreate();
 	myStackPush(obj, 1);
+	myStackPop(obj);
 	myStackPush(obj, 2);
-	myStackPush(obj, 3);
-	myStackPush(obj, 4);
-	myStackPush(obj, 5);
-
-	int param_2 = myStackPop(obj);
-	printf("%d\n", param_2);
-
 	int param_3 = myStackTop(obj);
 	printf("%d\n", param_3);
-
-	bool param_4 = myStackEmpty(obj);
-	printf("%d\n", param_4);
-
-	myStackFree(obj);
 
 	return EXIT_SUCCESS;
 }
