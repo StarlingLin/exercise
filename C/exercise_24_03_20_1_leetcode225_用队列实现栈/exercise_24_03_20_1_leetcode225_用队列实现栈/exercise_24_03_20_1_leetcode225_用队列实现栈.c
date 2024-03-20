@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <assert.h>
 
 //队列数据类型
 #define QueueData int
@@ -118,7 +119,7 @@ typedef struct
 
 
 MyStack* myStackCreate() {
-	MyStack* tmp = (MyStack*)malloc(siaeof(tmp));
+	MyStack* tmp = (MyStack*)malloc(sizeof(MyStack));
 	if (tmp == NULL)
 	{
 		perror("malloc");
@@ -130,7 +131,14 @@ MyStack* myStackCreate() {
 }
 
 void myStackPush(MyStack* obj, int x) {
-
+	if (!QueueEmpty(&obj->q1))
+	{
+		QueuePush(&obj->q1, x);
+	}
+	else
+	{
+		QueuePush(&obj->q2, x);
+	}
 }
 
 int myStackPop(MyStack* obj) 
@@ -142,7 +150,15 @@ int myStackPop(MyStack* obj)
 		pEmpty = &obj->q2;
 		pNotEmpty = &obj->q1;
 	}
-	
+	while (QueueSize(pNotEmpty) > 1)
+	{
+		int front = QueueFront(pNotEmpty);
+		QueuePush(pEmpty, front);
+		QueuePop(pNotEmpty);
+	}
+	int front = QueueFront(pNotEmpty);
+	QueuePop(pNotEmpty);
+	return front;
 }
 
 int myStackTop(MyStack* obj) {
@@ -156,24 +172,37 @@ int myStackTop(MyStack* obj) {
 	}
 }
 
-bool myStackEmpty(MyStack* obj) {
+bool myStackEmpty(MyStack* obj)
+{
 	return QueueEmpty(&obj->q1) && QueueEmpty(&obj->q2);
 }
 
-void myStackFree(MyStack* obj) {
-
+void myStackFree(MyStack* obj) 
+{
+	QueueDestory(&obj->q1);
+	QueueDestory(&obj->q2);
+	free(obj);
 }
 
-/**
- * Your MyStack struct will be instantiated and called as such:
- * MyStack* obj = myStackCreate();
- * myStackPush(obj, x);
+int main()
+{
+	MyStack* obj = myStackCreate();
+	myStackPush(obj, 1);
+	myStackPush(obj, 2);
+	myStackPush(obj, 3);
+	myStackPush(obj, 4);
+	myStackPush(obj, 5);
 
- * int param_2 = myStackPop(obj);
+	int param_2 = myStackPop(obj);
+	printf("%d\n", param_2);
 
- * int param_3 = myStackTop(obj);
+	int param_3 = myStackTop(obj);
+	printf("%d\n", param_3);
 
- * bool param_4 = myStackEmpty(obj);
+	bool param_4 = myStackEmpty(obj);
+	printf("%d\n", param_4);
 
- * myStackFree(obj);
-*/
+	myStackFree(obj);
+
+	return EXIT_SUCCESS;
+}
