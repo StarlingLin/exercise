@@ -16,3 +16,7 @@ typedef struct Heap
 void HeapInit(Heap* php);
 void HeapDestory(Heap* php);
 void HeapPush(Heap* php, HPDataType x);
+HPDataType HeapTop(Heap* php);
+void HeapPop(Heap* php);	//É¾³ý¶Ñ¶¥ÔªËØ
+int HeapSize(Heap* php);
+int HeapEmpty(Heap* php);

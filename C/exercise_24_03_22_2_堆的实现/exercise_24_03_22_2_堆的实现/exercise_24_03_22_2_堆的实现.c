@@ -12,6 +12,11 @@ int main()
 	{
 		HeapPush(&hp, a[i]);
 	}
+	while (!HeapEmpty(&hp))
+	{
+		printf("%d ", HeapTop(&hp));
+		HeapPop(&hp);
+	}
 	HeapDestory(&hp);
 	return EXIT_SUCCESS;
 }

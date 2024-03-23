@@ -69,3 +69,53 @@ void HeapPush(Heap* php, HPDataType x)
 	//向上调整
 	AdjustUp(php->data, php->size-1);
 }
+
+HPDataType HeapTop(Heap* php)
+{
+	assert(php);
+	assert(php->size > 0);
+	return php->data[0];
+}
+
+void AdjustDown(HPDataType* data, int size, int parent)
+{
+	int child = parent * 2 + 1;
+	while (child < size)
+	{
+		if (child + 1 < size && data[child + 1] < data[child])
+		{
+			++child;
+		}
+		if (data[child] < data[parent])
+		{
+			Swap(&data[child], &data[parent]);
+			parent = child;
+			child = parent * 2 + 1;
+		}
+		else
+		{
+			break;
+		}
+	}
+}
+
+void HeapPop(Heap* php)
+{
+	assert(php);
+	assert(php->size > 0);
+	Swap(&php->data[0], &php->data[php->size - 1]);
+	--php->size;
+	AdjustDown(php->data, php->size, 0);
+}
+
+int HeapSize(Heap* php)
+{
+	assert(php);
+	return php->size;
+}
+
+int HeapEmpty(Heap* php)
+{
+	assert(php);
+	return php->size == 0;
+}
