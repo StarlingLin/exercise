@@ -2,8 +2,6 @@
 
 #include "Heap.h"
 
-//Ğ¡¶Ñ
-
 void HeapInit(Heap* php)
 {
 	assert(php);
@@ -32,7 +30,7 @@ void AdjustUp(HPDataType* data, int child)
 	int parent = (child - 1) / 2;
 	while (child > 0)
 	{
-		if (data[child] < data[parent])
+		if (HEAP_COMPARE(data[child], data[parent]))
 		{
 			Swap(&data[child], &data[parent]);
 			child = parent;
@@ -82,11 +80,11 @@ void AdjustDown(HPDataType* data, int size, int parent)
 	int child = parent * 2 + 1;
 	while (child < size)
 	{
-		if (child + 1 < size && data[child + 1] < data[child])
+		if (child + 1 < size && HEAP_COMPARE(data[child + 1], data[child]))
 		{
 			++child;
 		}
-		if (data[child] < data[parent])
+		if (HEAP_COMPARE(data[child], data[parent]))
 		{
 			Swap(&data[child], &data[parent]);
 			parent = child;

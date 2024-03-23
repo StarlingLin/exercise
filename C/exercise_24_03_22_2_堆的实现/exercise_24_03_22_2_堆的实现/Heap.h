@@ -4,6 +4,15 @@
 #include <string.h>
 #include <assert.h>
 
+#define HEAP_TYPE 0	//0表示小堆，1表示大堆
+
+#if HEAP_TYPE == 0
+	#define HEAP_COMPARE(a, b) ((a) < (b))
+#elif HEAP_TYPE == 1
+	#define HEAP_COMPARE(a, b) ((a) > (b))
+#endif // HEAP_TYPE = 0
+
+
 typedef int HPDataType;
 
 typedef struct Heap
