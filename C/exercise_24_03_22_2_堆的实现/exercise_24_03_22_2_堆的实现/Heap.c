@@ -10,6 +10,25 @@ void HeapInit(Heap* php)
 	php->capacity = 0;
 }
 
+void HeapInitArr(Heap* php, HPDataType* a, int n)
+{
+	assert(php);
+	php->data = (HPDataType*)malloc(n * sizeof(HPDataType));
+	if (php->data == NULL)
+	{
+		perror("malloc fail\n");
+		exit(EXIT_FAILURE);
+	}
+	memcpy(php->data, a, n * sizeof(HPDataType));
+	php->size = php->capacity = n;
+
+	//向下调整
+	for (int i = (n - 2) / 2; i >= 0; --i)
+	{
+		AdjustDown(php->data, php->size, i);
+	}
+}
+
 void HeapDestory(Heap* php)
 {
 	assert(php);
