@@ -128,7 +128,60 @@ void BinaryTreePostOrder(BTNode* root)
 // 层序遍历
 void BinaryTreeLevelOrder(BTNode* root)
 {
+	Queue q;
+	QueueInit(&q);
+	if (root != NULL)
+	{
+		QueuePush(&q, root);
+	}
+	while (!QueueEmpty(&q))
+	{
+		BTNode* front = QueueFront(&q);
+		printf("%c ", front->_data);
+		QueuePop(&q);
+		if (front->_left != NULL)
+		{
+			QueuePush(&q, front->_left);
+		}
+		if (front->_right != NULL)
+		{
+			QueuePush(&q, front->_right);
+		}
+	}
+	printf("\n");
 
+	QueueDestory(&q);
 }
 // 判断二叉树是否是完全二叉树
-int BinaryTreeComplete(BTNode* root);
+int BinaryTreeComplete(BTNode* root)
+{
+	Queue q;
+	QueueInit(&q);
+	if (root != NULL)
+	{
+		QueuePush(&q, root);
+	}
+	while (!QueueEmpty(&q))
+	{
+		BTNode* front = QueueFront(&q);
+		QueuePop(&q);
+		if (front == NULL)
+		{
+			break;
+		}
+		QueuePush(&q, front->_left);
+		QueuePush(&q, front->_right);
+	}
+	while (!QueueEmpty(&q))
+	{
+		BTNode* front = QueueFront(&q);
+		QueuePop(&q);
+		if (front != NULL)
+		{
+			QueueDestory(&q);
+			return 0;
+		}
+	}
+	QueueDestory(&q);
+	return 1;
+}
