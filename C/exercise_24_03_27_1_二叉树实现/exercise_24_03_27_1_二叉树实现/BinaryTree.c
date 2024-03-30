@@ -137,15 +137,17 @@ void BinaryTreeLevelOrder(BTNode* root)
 	while (!QueueEmpty(&q))
 	{
 		BTNode* front = QueueFront(&q);
-		printf("%c ", front->_data);
 		QueuePop(&q);
+
 		if (front->_left != NULL)
 		{
+			printf("%c ", front->_data);
 			QueuePush(&q, front->_left);
-		}
-		if (front->_right != NULL)
-		{
 			QueuePush(&q, front->_right);
+		}
+		else
+		{
+			printf("NULL ");
 		}
 	}
 	printf("\n");
@@ -155,7 +157,7 @@ void BinaryTreeLevelOrder(BTNode* root)
 // 判断二叉树是否是完全二叉树
 int BinaryTreeComplete(BTNode* root)
 {
-	Queue q;
+		Queue q;
 	QueueInit(&q);
 	if (root != NULL)
 	{
