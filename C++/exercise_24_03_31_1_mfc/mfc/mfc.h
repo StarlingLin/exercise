@@ -14,4 +14,9 @@ class MyFrame :public CFrameWnd
 {
 public:
 	MyFrame();
+
+	DECLARE_MESSAGE_MAP()
+
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnChar(UINT nChar, UINT nRepCnt, UINT nFlags);
 };
