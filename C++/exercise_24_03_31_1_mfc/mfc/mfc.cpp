@@ -19,6 +19,7 @@ BOOL MyApp::InitInstance()
 BEGIN_MESSAGE_MAP(MyFrame, CFrameWnd)
 	ON_WM_LBUTTONDOWN()
 	ON_WM_CHAR()
+	ON_WM_PAINT()
 END_MESSAGE_MAP()
 
 MyFrame::MyFrame()
@@ -38,4 +39,13 @@ void MyFrame::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
 	CString str;
 	str.Format(_T("Char=%c"), nChar);
 	MessageBox(str, TEXT("Char"));
+}
+
+void MyFrame::OnPaint()
+{
+	CPaintDC dc(this);
+	CRect rect;
+	GetClientRect(&rect);
+	dc.TextOutW(10, 10, _T("Hello, MFC!"));
+	dc.Ellipse(rect);
 }
