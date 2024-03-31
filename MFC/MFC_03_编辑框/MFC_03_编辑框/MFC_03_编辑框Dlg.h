@@ -40,4 +40,8 @@ public:
 	afx_msg void OnBnClickedButton1();
 	afx_msg void OnBnClickedButton2();
 	virtual void OnOK();
+	CString m_txt3;
+	afx_msg void OnBnClickedButton3();
+	afx_msg void OnBnClickedButton4();
+	afx_msg void OnBnClickedCheck1();
 };

@@ -52,6 +52,7 @@ END_MESSAGE_MAP()
 
 CMFC03编辑框Dlg::CMFC03编辑框Dlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_MFC_03__DIALOG, pParent)
+	, m_txt3(_T(""))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -62,6 +63,7 @@ void CMFC03编辑框Dlg::DoDataExchange(CDataExchange* pDX)
 	//  DDX_Control(pDX, IDC_EDIT1, m_edit1);
 	DDX_Control(pDX, IDC_EDIT1, m_edit1);
 	DDX_Control(pDX, IDC_EDIT2, m_edit2);
+	DDX_Text(pDX, IDC_EDIT3, m_txt3);
 }
 
 BEGIN_MESSAGE_MAP(CMFC03编辑框Dlg, CDialogEx)
@@ -70,6 +72,9 @@ BEGIN_MESSAGE_MAP(CMFC03编辑框Dlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BUTTON1, &CMFC03编辑框Dlg::OnBnClickedButton1)
 	ON_BN_CLICKED(IDC_BUTTON2, &CMFC03编辑框Dlg::OnBnClickedButton2)
+	ON_BN_CLICKED(IDC_BUTTON3, &CMFC03编辑框Dlg::OnBnClickedButton3)
+	ON_BN_CLICKED(IDC_BUTTON4, &CMFC03编辑框Dlg::OnBnClickedButton4)
+	ON_BN_CLICKED(IDC_CHECK1, &CMFC03编辑框Dlg::OnBnClickedCheck1)
 END_MESSAGE_MAP()
 
 
@@ -182,4 +187,31 @@ void CMFC03编辑框Dlg::OnOK()
 	// TODO: 在此添加专用代码和/或调用基类
 
 	// CDialogEx::OnOK();
+}
+
+
+void CMFC03编辑框Dlg::OnBnClickedButton3()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	// 利用关联value的方式获取编辑框内容
+	m_txt3 = L"骇害嗨~";
+	UpdateData(FALSE);
+}
+
+
+void CMFC03编辑框Dlg::OnBnClickedButton4()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	MessageBox(m_txt3, L"信息");
+}
+
+
+
+void CMFC03编辑框Dlg::OnBnClickedCheck1()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	if (((CButton*)GetDlgItem(IDC_CHECK1))->GetCheck())
+		m_edit1.SetReadOnly(TRUE);
+	else
+		m_edit1.SetReadOnly(FALSE);
 }
