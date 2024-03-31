@@ -60,6 +60,8 @@ void CMFC02静态文本控件Dlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_TXT1, m_txt1);
+	DDX_Control(pDX, IDC_IMG, m_img);
+	DDX_Control(pDX, IDC_BUTTON4, m_btn);
 }
 
 BEGIN_MESSAGE_MAP(CMFC02静态文本控件Dlg, CDialogEx)
@@ -69,6 +71,7 @@ BEGIN_MESSAGE_MAP(CMFC02静态文本控件Dlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON1, &CMFC02静态文本控件Dlg::OnBnClickedButton1)
 	ON_BN_CLICKED(IDC_BUTTON2, &CMFC02静态文本控件Dlg::OnBnClickedButton2)
 	ON_BN_CLICKED(IDC_BUTTON3, &CMFC02静态文本控件Dlg::OnBnClickedButton3)
+	ON_BN_CLICKED(IDC_BUTTON4, &CMFC02静态文本控件Dlg::OnBnClickedButton4)
 END_MESSAGE_MAP()
 
 
@@ -104,6 +107,11 @@ BOOL CMFC02静态文本控件Dlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
+	m_img.ModifyStyle(1, SS_BITMAP | SS_CENTERIMAGE);
+#define HBMP(filepath, width, height) (HBITMAP)LoadImage(AfxGetInstanceHandle(), filepath, IMAGE_BITMAP, width, height, LR_LOADFROMFILE | LR_CREATEDIBSECTION)
+	CRect rect;
+	m_img.GetWindowRect(rect);
+	m_img.SetBitmap(HBMP(L"./img.bmp", rect.Width(), rect.Height()));
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -178,5 +186,16 @@ void CMFC02静态文本控件Dlg::OnBnClickedButton3()
 	// TODO: 在此添加控件通知处理程序代码
 	CString str;
 	m_txt1.GetWindowTextW(str);
-	MessageBox(str);
+	MessageBox(str, L"文本");
+}
+
+
+void CMFC02静态文本控件Dlg::OnBnClickedButton4()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	m_btn.SetWindowTextW(L"饿啊~");
+	CString str;
+	m_btn.GetWindowTextW(str);
+	MessageBox(str, L"按钮");
+	m_btn.EnableWindow(FALSE);
 }

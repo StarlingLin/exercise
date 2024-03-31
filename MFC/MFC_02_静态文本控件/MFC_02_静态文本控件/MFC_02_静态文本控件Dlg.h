@@ -38,4 +38,9 @@ private:
 public:
 	afx_msg void OnBnClickedButton2();
 	afx_msg void OnBnClickedButton3();
+private:
+	CStatic m_img;
+	CButton m_btn;
+public:
+	afx_msg void OnBnClickedButton4();
 };
