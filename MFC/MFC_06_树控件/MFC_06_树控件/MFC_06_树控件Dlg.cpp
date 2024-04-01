@@ -117,7 +117,7 @@ BOOL CMFC06树控件Dlg::OnInitDialog()
 	HTREEITEM root = m_tree.InsertItem(TEXT("根节点"), 0, 0);
 	HTREEITEM parent = m_tree.InsertItem(TEXT("子节点1"), 1, 1, root);
 	m_tree.InsertItem(TEXT("子节点2"), 2, 2, parent);
-	m_tree.InsertItem(TEXT("子节点3"), 2, 3, parent);
+	m_tree.InsertItem(TEXT("子节点3"), 2, 2, parent);
 
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
