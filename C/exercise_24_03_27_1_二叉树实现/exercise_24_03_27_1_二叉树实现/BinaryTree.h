@@ -5,19 +5,10 @@
 #include <stdio.h>
 #include "Queue.h"
 
-typedef char BTDataType;
-
-typedef struct BinaryTreeNode
-{
-	BTDataType _data;
-	struct BinaryTreeNode* _left;
-	struct BinaryTreeNode* _right;
-} BTNode;
-
 // 通过前序遍历的数组"ABD##E#H##CF##G##"构建二叉树
 BTNode* BinaryTreeCreate(BTDataType* a, int n, int* pi);
 // 二叉树销毁
-void BinaryTreeDestory(BTNode** root);
+void BinaryTreeDestroy(BTNode** root);
 // 二叉树节点个数
 int BinaryTreeSize(BTNode* root);
 // 二叉树叶子节点个数

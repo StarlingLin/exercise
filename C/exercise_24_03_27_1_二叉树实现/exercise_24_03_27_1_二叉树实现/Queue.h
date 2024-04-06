@@ -5,7 +5,16 @@
 #include <assert.h>
 
 //队列数据类型
-#define QueueData int
+#define QueueData BTNode*
+
+typedef char BTDataType;
+
+typedef struct BinaryTreeNode
+{
+	BTDataType _data;
+	struct BinaryTreeNode* _left;
+	struct BinaryTreeNode* _right;
+} BTNode;
 
 //队列
 typedef struct QueueNode
@@ -36,4 +45,4 @@ int QueueSize(Queue* pq);
 //队列判空
 _Bool QueueEmpty(Queue* pq);
 //队列销毁
-void QueueDestory(Queue* pq);
+void QueueDestroy(Queue* pq);

@@ -84,7 +84,7 @@ _Bool QueueEmpty(Queue* pq)
 	return pq->_size == 0;
 }
 //¶ÓÁÐÏú»Ù
-void QueueDestory(Queue* pq)
+void QueueDestroy(Queue* pq)
 {
 	assert(pq);
 	QueueNode* cur = pq->_front;

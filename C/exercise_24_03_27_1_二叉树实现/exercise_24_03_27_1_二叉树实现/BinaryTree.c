@@ -4,7 +4,7 @@
 
 BTNode* BuyBTNode(BTDataType x)
 {
-	BTNode* new = (BTDataType*)malloc(sizeof(BTNode));
+	BTNode* new = (BTNode*)malloc(sizeof(BTNode));
 	if (new == NULL)
 	{
 		perror("malloc");
@@ -18,24 +18,25 @@ BTNode* BuyBTNode(BTDataType x)
 // 通过前序遍历的数组"ABD##E#H##CF##G##"构建二叉树
 BTNode* BinaryTreeCreate(BTDataType* a, int n, int* pi)
 {
-	if (a[*pi++] == '#')
+	if (*pi >= n || a[*pi] == '#') 
 	{
+		(*pi)++; // 跳过当前的'#'或越界的元素
 		return NULL;
 	}
-	BTNode* root = BuyBTNode(a[*pi++]);
+	BTNode* root = BuyBTNode(a[(*pi)++]);
 	root->_left = BinaryTreeCreate(a, n, pi);
 	root->_right = BinaryTreeCreate(a, n, pi);
 	return root;
 }
 // 二叉树销毁
-void BinaryTreeDestory(BTNode** root)
+void BinaryTreeDestroy(BTNode** root)
 {
 	if (*root == NULL)
 	{
 		return;
 	}
-	BinaryTreeDestory(&(*root)->_left);
-	BinaryTreeDestory(&(*root)->_right);
+	BinaryTreeDestroy(&(*root)->_left);
+	BinaryTreeDestroy(&(*root)->_right);
 	free(*root);
 	*root = NULL;
 }
@@ -139,20 +140,20 @@ void BinaryTreeLevelOrder(BTNode* root)
 		BTNode* front = QueueFront(&q);
 		QueuePop(&q);
 
-		if (front->_left != NULL)
+		printf("%c ", front->_data); // 直接打印当前节点的数据
+
+		if (front->_left != NULL) 
 		{
-			printf("%c ", front->_data);
-			QueuePush(&q, front->_left);
-			QueuePush(&q, front->_right);
+			QueuePush(&q, front->_left); // 只有非NULL节点才入队
 		}
-		else
+		if (front->_right != NULL) 
 		{
-			printf("NULL ");
+			QueuePush(&q, front->_right); // 只有非NULL节点才入队
 		}
 	}
 	printf("\n");
 
-	QueueDestory(&q);
+	QueueDestroy(&q);
 }
 // 判断二叉树是否是完全二叉树
 int BinaryTreeComplete(BTNode* root)
@@ -180,10 +181,10 @@ int BinaryTreeComplete(BTNode* root)
 		QueuePop(&q);
 		if (front != NULL)
 		{
-			QueueDestory(&q);
+			QueueDestroy(&q);
 			return 0;
 		}
 	}
-	QueueDestory(&q);
+	QueueDestroy(&q);
 	return 1;
 }
