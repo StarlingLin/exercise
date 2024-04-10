@@ -76,7 +76,21 @@ void ShellSort(int* arr, int n)
 //—°‘Ò≈≈–Ú
 void SelectSort(int* arr, int n)
 {
-
+	for (int i = 0; i < n - 1; ++i)
+	{
+		int min = i;
+		for (int j = i + 1; j < n; ++j)
+		{
+			if (arr[j] < arr[min])
+			{
+				min = j;
+			}
+		}
+		if (min != i)
+		{
+			Swap(&arr[i], &arr[min]);
+		}
+	}
 }
 //∂—≈≈–Ú
 void AdjustDown(int* arr, int n, int parent)
@@ -137,9 +151,28 @@ void BubbleSort(int* arr, int n)
 	}
 }
 //øÏÀŸ≈≈–Ú
-void QuickSort(int* arr, int n)
+void QuickSort(int* arr, int left, int right)
 {
-
+	if (left >= right)
+	{
+		return;
+	}
+	int key = left, begin = left, end = right;
+	while (left < right)
+	{
+		while (left < right && arr[right] >= arr[key])
+		{
+			--right;
+		}
+		while (left < right && arr[left] <= arr[key])
+		{
+			++left;
+		}
+		Swap(&arr[left], &arr[right]);
+	}
+	Swap(&arr[left], &arr[key]);
+	QuickSort(arr, begin, left - 1);
+	QuickSort(arr, left + 1, end);
 }
 
 //πÈ≤¢≈≈–Ú

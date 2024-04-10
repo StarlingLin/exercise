@@ -49,14 +49,14 @@ void TestQuickSort()
 {
 	int arr[] = { 3, 9, 1, 4, 7, 5, 2, 8, 6 };
 	int n = sizeof(arr) / sizeof(arr[0]);
-	QuickSort(arr, n);
+	QuickSort(arr, 0, n - 1);
 	PrintArray(arr, n);
 }
 
 void TestTime()
 {
 	srand((unsigned int)time(NULL));
-	const int N = 100000;
+	const int N = 10000000;
 	int* arr1 = (int*)malloc(sizeof(int) * N);
 	int* arr2 = (int*)malloc(sizeof(int) * N);
 	int* arr3 = (int*)malloc(sizeof(int) * N);
@@ -99,19 +99,21 @@ void TestTime()
 	printf("BubbleSort:%d\n", end - start);
 
 	start = clock();
-	QuickSort(arr6, N);
+	QuickSort(arr6, 0, N - 1);
 	end = clock();
 	printf("QuickSort:%d\n", end - start);
+	//PrintArray(arr6, N);
 }
 
 int main()
 {
 	TestInsertSort();
 	TestShellSort();
-	//TestSelectSort();
+	TestSelectSort();
 	TestHeapSort();
 	TestBubbleSort();
-	//TestQuickSort();
+	TestQuickSort();
+	
 	TestTime();
 	return 0;
 }
