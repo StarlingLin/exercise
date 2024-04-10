@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "Sort.h"
 
 //打印数组
@@ -151,6 +152,8 @@ void BubbleSort(int* arr, int n)
 	}
 }
 //快速排序
+////////////////////////////////////////////////
+/*基础版快排*/
 void QuickSort(int* arr, int left, int right)
 {
 	if (left >= right)
@@ -174,5 +177,83 @@ void QuickSort(int* arr, int left, int right)
 	QuickSort(arr, begin, left - 1);
 	QuickSort(arr, left + 1, end);
 }
+////////////////////////////////////////////////
+/*随机选key的快排*/
+void QuickSortRandomKey(int* arr, int left, int right)
+{
+	if (left >= right)
+	{
+		return;
+	}
+	int key = left, begin = left, end = right;
+
+	//生成随机数并将该位置与首位调换
+	int random = rand() % (right - left + 1) + left;
+	Swap(&arr[random], &arr[left]);
+
+	while (left < right)
+	{
+		while (left < right && arr[right] >= arr[key])
+		{
+			--right;
+		}
+		while (left < right && arr[left] <= arr[key])
+		{
+			++left;
+		}
+		Swap(&arr[left], &arr[right]);
+	}
+	Swap(&arr[left], &arr[key]);
+	QuickSort(arr, begin, left - 1);
+	QuickSort(arr, left + 1, end);
+}
+////////////////////////////////////////////////
+/*三数取中法*/
+int GetMid(int* arr, int left, int right)
+{
+	int center = (left + right) / 2;
+	if (arr[left] > arr[center])
+	{
+		Swap(&arr[left], &arr[center]);
+	}
+	if (arr[left] > arr[right])
+	{
+		Swap(&arr[left], &arr[right]);
+	}
+	if (arr[left] > arr[center])
+	{
+		Swap(&arr[center], &arr[right]);
+	}
+	return arr[center];
+}
+void QuickSortMidKey(int* arr, int left, int right)
+{
+	if (left >= right)
+	{
+		return;
+	}
+	int key = left, begin = left, end = right;
+
+	//三数取中
+	int mid = GetMid(arr, left, right);
+	Swap(&arr[mid], &arr[left]);
+
+	while (left < right)
+	{
+		while (left < right && arr[right] >= arr[key])
+		{
+			--right;
+		}
+		while (left < right && arr[left] <= arr[key])
+		{
+			++left;
+		}
+		Swap(&arr[left], &arr[right]);
+	}
+	Swap(&arr[left], &arr[key]);
+	QuickSort(arr, begin, left - 1);
+	QuickSort(arr, left + 1, end);
+}
+////////////////////////////////////////////////
 
 //归并排序
