@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Sort.h"
+#include "Stack.h"
 
 //打印数组
 void PrintArray(int* a, int n)
@@ -153,7 +154,7 @@ void BubbleSort(int* arr, int n)
 }
 //快速排序
 ////////////////////////////////////////////////
-/*基础版快排*/
+/*hoare快排*/
 void QuickSort(int* arr, int left, int right)
 {
 	if (left >= right)
@@ -178,7 +179,7 @@ void QuickSort(int* arr, int left, int right)
 	QuickSort(arr, left + 1, end);
 }
 ////////////////////////////////////////////////
-/*随机选key的快排*/
+/*随机选key优化*/
 void QuickSortRandomKey(int* arr, int left, int right)
 {
 	if (left >= right)
@@ -208,7 +209,7 @@ void QuickSortRandomKey(int* arr, int left, int right)
 	QuickSort(arr, left + 1, end);
 }
 ////////////////////////////////////////////////
-/*三数取中法*/
+/*三数取中法优化*/
 int GetMid(int* arr, int left, int right)
 {
 	int center = (left + right) / 2;
@@ -253,6 +254,138 @@ void QuickSortMidKey(int* arr, int left, int right)
 	Swap(&arr[left], &arr[key]);
 	QuickSort(arr, begin, left - 1);
 	QuickSort(arr, left + 1, end);
+}
+////////////////////////////////////////////////
+/*小区间优化*/
+void QuickSortOptimized(int* arr, int left, int right)
+{
+	if (left >= right)
+	{
+		return;
+	}
+	if (right - left < 10)
+	{
+		InsertSort(arr + left, right - left + 1);
+	}
+	else
+	{
+		int key = left, begin = left, end = right;
+
+		//三数取中
+		int mid = GetMid(arr, left, right);
+		Swap(&arr[mid], &arr[left]);
+
+		while (left < right)
+		{
+			while (left < right && arr[right] >= arr[key])
+			{
+				--right;
+			}
+			while (left < right && arr[left] <= arr[key])
+			{
+				++left;
+			}
+			Swap(&arr[left], &arr[right]);
+		}
+		Swap(&arr[left], &arr[key]);
+		QuickSort(arr, begin, left - 1);
+		QuickSort(arr, left + 1, end);
+	}
+}
+////////////////////////////////////////////////
+/*挖坑法*/
+void QuickSortDigHole(int* arr, int left, int right)
+{
+	if (left >= right)
+	{
+		return;
+	}
+	int key = left, begin = left, end = right;
+	int tmp = arr[key];	//挖坑
+	while (left < right)
+	{
+		while (left < right && arr[right] >= tmp)
+		{
+			--right;
+		}
+		arr[left] = arr[right];	//此时坑位从左边变为右边
+		while (left < right && arr[left] <= tmp)
+		{
+			++left;
+		}
+		arr[right] = arr[left];	//此时坑位从右边变为左边
+	}
+	arr[left] = tmp;
+	QuickSort(arr, begin, left - 1);
+	QuickSort(arr, left + 1, end);
+}
+////////////////////////////////////////////////
+/*前后指针法*/
+void QuickSortPrevCur(int* arr, int left, int right)
+{
+	if (left >= right)
+	{
+		return;
+	}
+	int key = left, begin = left, end = right;
+	int prev = left, cur = left + 1;
+	while (cur <= right)
+	{
+		if (arr[cur] < arr[key] && ++prev != cur)
+		{
+			Swap(&arr[prev], &arr[cur]);
+		}
+		++cur;
+	}
+	Swap(&arr[prev], &arr[key]);
+	key = prev;
+	//[begin, key - 1] [key] [key + 1, end]
+	QuickSort(arr, begin, key - 1);
+	QuickSort(arr, key + 1, end);
+}
+////////////////////////////////////////////////
+/*非递归快排*/
+void QuickSortNonR(int* arr, int left, int right)
+{
+	if (left >= right)
+	{
+		return;
+	}
+	Stack st;
+	InitStack(&st);
+	StackPush(&st, left);
+	StackPush(&st, right);
+	while (!StackEmpty(&st))
+	{
+		int end = StackTop(&st);
+		StackPop(&st);
+		int begin = StackTop(&st);
+		StackPop(&st);
+		int key = begin;
+		int prev = begin, cur = begin + 1;
+		while (cur <= end)
+		{
+			if (arr[cur] < arr[key] && ++prev != cur)
+			{
+				Swap(&arr[prev], &arr[cur]);
+			}
+			++cur;
+		}
+		Swap(&arr[prev], &arr[key]);
+		key = prev;
+		//[begin, key - 1] [key] [key + 1, end]
+		if (begin < key - 1)
+		{
+			StackPush(&st, begin);
+			StackPush(&st, key - 1);
+		}
+		if (key + 1 < end)
+		{
+			StackPush(&st, key + 1);
+			StackPush(&st, end);
+		}
+	}
+	StackDestory(&st);
 }
 ////////////////////////////////////////////////
 
