@@ -390,3 +390,32 @@ void QuickSortNonR(int* arr, int left, int right)
 ////////////////////////////////////////////////
 
 //πÈ≤¢≈≈–Ú
+void Merge(int* arr, int* tmp, int left, int mid, int right)
+{
+	int begin1 = left, end1 = mid;
+	int begin2 = mid + 1, end2 = right;
+	int index = left;
+	while (begin1 <= end1 && begin2 <= end2)
+	{
+		if (arr[begin1] < arr[begin2])
+		{
+			tmp[index++] = arr[begin1++];
+		}
+		else
+		{
+			tmp[index++] = arr[begin2++];
+		}
+	}
+	while (begin1 <= end1)
+	{
+		tmp[index++] = arr[begin1++];
+	}
+	while (begin2 <= end2)
+	{
+		tmp[index++] = arr[begin2++];
+	}
+	for (int i = left; i <= right; ++i)
+	{
+		arr[i] = tmp[i];
+	}
+}

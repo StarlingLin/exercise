@@ -31,3 +31,4 @@ void QuickSortPrevCur(int* arr, int left, int right);
 void QuickSortNonR(int* arr, int left, int right);
 
 //πÈ≤¢≈≈–Ú
+void MergeSort(int* arr, int n);
