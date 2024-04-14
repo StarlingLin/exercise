@@ -101,6 +101,14 @@ void TestQuickSortNonR()
 	PrintArray(arr, n);
 }
 
+void TestMergeSort()
+{
+	int arr[] = { 3, 9, 1, 4, 7, 5, 2, 8, 6 };
+	int n = sizeof(arr) / sizeof(arr[0]);
+	MergeSort(arr, n);
+	PrintArray(arr, n);
+}
+
 void TestTime()
 {
 	srand((unsigned int)time(NULL));
@@ -117,7 +125,7 @@ void TestTime()
 	int* arr10 = (int*)malloc(sizeof(int) * N);
 	int* arr11 = (int*)malloc(sizeof(int) * N);
 	int* arr12 = (int*)malloc(sizeof(int) * N);
-	//int* arr13 = (int*)malloc(sizeof(int) * N);
+	int* arr13 = (int*)malloc(sizeof(int) * N);
 	//int* arr14 = (int*)malloc(sizeof(int) * N);
 
 	for (int i = 0; i < N; ++i)
@@ -134,7 +142,7 @@ void TestTime()
 		arr10[i] = arr1[i];
 		arr11[i] = arr1[i];
 		arr12[i] = arr1[i];
-		//arr13[i] = arr[i];
+		arr13[i] = arr1[i];
 		//arr14[i] = arr[i];
 		
 		//arr6[i] = i;
@@ -144,8 +152,6 @@ void TestTime()
 		//arr10[i] = i;
 		//arr11[i] = i;
 		//arr12[i] = i;
-		//arr13[i] = i;
-		//arr14[i] = i;
 	}
 	
 	clock_t start = clock();
@@ -219,6 +225,11 @@ void TestTime()
 	QuickSortNonR(arr12, 0, N - 1);
 	end = clock();
 	printf("QuickSortNonR:%d\n", end - start);
+
+	start = clock();
+	MergeSort(arr13, N);
+	end = clock();
+	printf("MergeSort:%d\n", end - start);
 }
 
 int main()
@@ -235,6 +246,7 @@ int main()
 	TestQuickSortDigHole();
 	TestQuickSortPrevCur();
 	TestQuickSortNonR();
+	TestMergeSort();
 	
 	TestTime();
 	return 0;

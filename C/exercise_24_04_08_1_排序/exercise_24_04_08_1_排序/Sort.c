@@ -390,8 +390,20 @@ void QuickSortNonR(int* arr, int left, int right)
 ////////////////////////////////////////////////
 
 //¹é²¢ÅÅĞò
-void Merge(int* arr, int* tmp, int left, int mid, int right)
+void _MergeSort(int* arr, int left, int right, int* tmp)
 {
+	if (left >= right)
+	{
+		return;
+	}
+
+	int mid = (left + right) / 2;
+	//[left, mid] [mid + 1, right]
+	
+	_MergeSort(arr, left, mid, tmp);
+	_MergeSort(arr, mid + 1, right, tmp);
+
+	//ºÏ²¢
 	int begin1 = left, end1 = mid;
 	int begin2 = mid + 1, end2 = right;
 	int index = left;
@@ -414,8 +426,20 @@ void Merge(int* arr, int* tmp, int left, int mid, int right)
 	{
 		tmp[index++] = arr[begin2++];
 	}
-	for (int i = left; i <= right; ++i)
+	memcpy(arr + left, tmp + left, sizeof(int) * (right - left + 1));
+}
+
+void MergeSort(int* arr, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	if (tmp == NULL)
 	{
-		arr[i] = tmp[i];
+		perror("malloc");
+		return;
 	}
+
+	_MergeSort(arr, 0, n - 1, tmp);
+
+	free(tmp);
+	tmp = NULL;
 }
