@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "Sort.h"
 #include "Stack.h"
 
@@ -440,6 +441,55 @@ void MergeSort(int* arr, int n)
 
 	_MergeSort(arr, 0, n - 1, tmp);
 
+	free(tmp);
+	tmp = NULL;
+}
+
+void MergeSortNonR(int* arr, int n)
+{
+	int* tmp = (int*)malloc(n * sizeof(int));
+	if (tmp == NULL)
+	{
+		perror("malloc fail");
+		return;
+	}
+	for (int gap = 1; gap < n; gap *= 2)
+	{
+		for (int j = 0; j < n; j += 2 * gap)
+		{
+			int begin1 = j, end1 = begin1 + gap - 1;
+			int begin2 = begin1 + gap, end2 = begin2 + gap - 1;
+			if (end1 >= n || begin2 >= n)
+			{
+				break;
+			}
+			if (end2 >= n)
+			{
+				end2 = n - 1;
+			}
+			int i = j;
+			while (begin1 <= end1 && begin2 <= end2)
+			{
+				if (arr[begin1] < arr[begin2])
+				{
+					tmp[i++] = arr[begin1++];
+				}
+				else
+				{
+					tmp[i++] = arr[begin2++];
+				}
+			}
+			while (begin1 <= end1)
+			{
+				tmp[i++] = arr[begin1++];
+			}
+			while (begin2 <= end2)
+			{
+				tmp[i++] = arr[begin2++];
+			}
+			memcpy(arr + j, tmp + j, sizeof(int) * (end2 - j + 1));	//用j不用begin1，begin1已经改变
+		}
+	}
 	free(tmp);
 	tmp = NULL;
 }

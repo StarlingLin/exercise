@@ -109,6 +109,14 @@ void TestMergeSort()
 	PrintArray(arr, n);
 }
 
+void TestMergeSortNonR()
+{
+	int arr[] = { 3, 9, 1, 4, 7, 5, 2, 8, 6 };
+	int n = sizeof(arr) / sizeof(arr[0]);
+	MergeSortNonR(arr, n);
+	PrintArray(arr, n);
+}
+
 void TestTime()
 {
 	srand((unsigned int)time(NULL));
@@ -126,7 +134,7 @@ void TestTime()
 	int* arr11 = (int*)malloc(sizeof(int) * N);
 	int* arr12 = (int*)malloc(sizeof(int) * N);
 	int* arr13 = (int*)malloc(sizeof(int) * N);
-	//int* arr14 = (int*)malloc(sizeof(int) * N);
+	int* arr14 = (int*)malloc(sizeof(int) * N);
 
 	for (int i = 0; i < N; ++i)
 	{
@@ -143,7 +151,7 @@ void TestTime()
 		arr11[i] = arr1[i];
 		arr12[i] = arr1[i];
 		arr13[i] = arr1[i];
-		//arr14[i] = arr[i];
+		arr14[i] = arr1[i];
 		
 		//arr6[i] = i;
 		//arr7[i] = i;
@@ -230,6 +238,11 @@ void TestTime()
 	MergeSort(arr13, N);
 	end = clock();
 	printf("MergeSort:%d\n", end - start);
+
+	start = clock();
+	MergeSortNonR(arr14, N);
+	end = clock();
+	printf("MergeSortNonR:%d\n", end - start);
 }
 
 int main()
@@ -247,6 +260,7 @@ int main()
 	TestQuickSortPrevCur();
 	TestQuickSortNonR();
 	TestMergeSort();
+	TestMergeSortNonR();
 	
 	TestTime();
 	return 0;

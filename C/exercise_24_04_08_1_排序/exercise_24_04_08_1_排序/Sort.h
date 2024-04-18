@@ -32,3 +32,4 @@ void QuickSortNonR(int* arr, int left, int right);
 
 //πÈ≤¢≈≈–Ú
 void MergeSort(int* arr, int n);
+void MergeSortNonR(int* arr, int n);
