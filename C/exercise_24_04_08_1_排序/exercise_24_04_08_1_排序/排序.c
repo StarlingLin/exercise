@@ -147,7 +147,8 @@ void TestTime()
 
 	for (int i = 0; i < N; ++i)
 	{
-		arr1[i] = rand();
+		int random = rand() % 1000 * 1000 * 1000 + rand() % 1000 * 1000 + rand() % 1000;
+		arr1[i] = random;
 		arr2[i] = arr1[i];
 		arr3[i] = arr1[i];
 		arr4[i] = arr1[i];
