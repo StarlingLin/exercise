@@ -495,3 +495,41 @@ void MergeSortNonR(int* arr, int n)
 }
 
 //¼ÆÊıÅÅĞò
+void CountSort(int* arr, int n)
+{
+	int max = arr[0];
+	int min = arr[0];
+	for (int i = 1; i < n; ++i)
+	{
+		if (arr[i] > max)
+		{
+			max = arr[i];
+		}
+		if (arr[i] < min)
+		{
+			min = arr[i];
+		}
+	}
+	int range = max - min + 1;
+	int* count = (int*)malloc(sizeof(int) * range);
+	if (count == NULL)
+	{
+		perror("malloc");
+		return;
+	}
+	memset(count, 0, sizeof(int) * range);
+	for (int i = 0; i < n; ++i)
+	{
+		count[arr[i] - min]++;
+	}
+	int index = 0;
+	for (int i = 0; i < range; ++i)
+	{
+		while (count[i]--)
+		{
+			arr[index++] = i + min;
+		}
+	}
+	free(count);
+	count = NULL;
+}

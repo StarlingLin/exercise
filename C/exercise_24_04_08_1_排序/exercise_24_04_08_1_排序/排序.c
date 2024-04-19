@@ -117,6 +117,14 @@ void TestMergeSortNonR()
 	PrintArray(arr, n);
 }
 
+void TestCountSort()
+{
+	int arr[] = { 3, 9, 1, 4, 7, 5, 2, 8, 6 };
+	int n = sizeof(arr) / sizeof(arr[0]);
+	CountSort(arr, n);
+	PrintArray(arr, n);
+}
+
 void TestTime()
 {
 	srand((unsigned int)time(NULL));
@@ -135,6 +143,7 @@ void TestTime()
 	int* arr12 = (int*)malloc(sizeof(int) * N);
 	int* arr13 = (int*)malloc(sizeof(int) * N);
 	int* arr14 = (int*)malloc(sizeof(int) * N);
+	int* arr15 = (int*)malloc(sizeof(int) * N);
 
 	for (int i = 0; i < N; ++i)
 	{
@@ -152,6 +161,7 @@ void TestTime()
 		arr12[i] = arr1[i];
 		arr13[i] = arr1[i];
 		arr14[i] = arr1[i];
+		arr15[i] = arr1[i];
 		
 		//arr6[i] = i;
 		//arr7[i] = i;
@@ -165,7 +175,7 @@ void TestTime()
 	clock_t start = clock();
 	//InsertSort(arr1, N);
 	clock_t end = clock();
-	printf("InsertSort:%d\n", end - start);
+	//printf("InsertSort:%d\n", end - start);
 	free(arr1);
 
 	start = clock();
@@ -177,7 +187,7 @@ void TestTime()
 	start = clock();
 	//SelectSort(arr3, N);
 	end = clock();
-	printf("SelectSort:%d\n", end - start);
+	//printf("SelectSort:%d\n", end - start);
 	free(arr3);
 
 	start = clock();
@@ -189,7 +199,7 @@ void TestTime()
 	start = clock();
 	//BubbleSort(arr5, N);
 	end = clock();
-	printf("BubbleSort:%d\n", end - start);
+	//printf("BubbleSort:%d\n", end - start);
 	free(arr5);
 
 	start = clock();
@@ -200,49 +210,58 @@ void TestTime()
 	free(arr6);
 
 	start = clock();
-	QuickSortRandomKey(arr7, 0, N - 1);
+	//QuickSortRandomKey(arr7, 0, N - 1);
 	end = clock();
-	printf("QuickSortRandomKey:%d\n", end - start);
+	//printf("QuickSortRandomKey:%d\n", end - start);
 	free(arr7);
 
 	start = clock();
-	QuickSortMidKey(arr8, 0, N - 1);
+	//QuickSortMidKey(arr8, 0, N - 1);
 	end = clock();
-	printf("QuickSortMidKey:%d\n", end - start);
+	//printf("QuickSortMidKey:%d\n", end - start);
 	free(arr8);
 
 	start = clock();
-	QuickSortOptimized(arr9, 0, N - 1);
+	//QuickSortOptimized(arr9, 0, N - 1);
 	end = clock();
-	printf("QuickSortOptimized:%d\n", end - start);
+	//printf("QuickSortOptimized:%d\n", end - start);
 	free(arr9);
 
 	start = clock();
-	QuickSortDigHole(arr10, 0, N - 1);
+	//QuickSortDigHole(arr10, 0, N - 1);
 	end = clock();
-	printf("QuickSortDigHole:%d\n", end - start);
+	//printf("QuickSortDigHole:%d\n", end - start);
 	free(arr10);
 
 	start = clock();
-	QuickSortPrevCur(arr11, 0, N - 1);
+	//QuickSortPrevCur(arr11, 0, N - 1);
 	end = clock();
-	printf("QuickSortPrevCur:%d\n", end - start);
+	//printf("QuickSortPrevCur:%d\n", end - start);
 	free(arr11);
 
 	start = clock();
-	QuickSortNonR(arr12, 0, N - 1);
+	//QuickSortNonR(arr12, 0, N - 1);
 	end = clock();
-	printf("QuickSortNonR:%d\n", end - start);
+	//printf("QuickSortNonR:%d\n", end - start);
+	free(arr12);
 
 	start = clock();
 	MergeSort(arr13, N);
 	end = clock();
 	printf("MergeSort:%d\n", end - start);
+	free(arr13);
 
 	start = clock();
 	MergeSortNonR(arr14, N);
 	end = clock();
 	printf("MergeSortNonR:%d\n", end - start);
+	free(arr14);
+
+	start = clock();
+	CountSort(arr15, N);
+	end = clock();
+	printf("CountSort:%d\n", end - start);
+	free(arr15);
 }
 
 int main()
@@ -261,6 +280,7 @@ int main()
 	TestQuickSortNonR();
 	TestMergeSort();
 	TestMergeSortNonR();
+	TestCountSort();
 	
 	TestTime();
 	return 0;
