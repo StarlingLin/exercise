@@ -533,3 +533,97 @@ void CountSort(int* arr, int n)
 	free(count);
 	count = NULL;
 }
+
+//»ùÊýÅÅÐò
+void RadixSort(int* arr, int n)
+{
+	int max = arr[0];
+	for (int i = 1; i < n; ++i)
+	{
+		if (arr[i] > max)
+		{
+			max = arr[i];
+		}
+	}
+	int maxDigit = 0;
+	while (max)
+	{
+		max /= 10;
+		++maxDigit;
+	}
+	int* count = (int*)malloc(sizeof(int) * 10);
+	int* bucket = (int*)malloc(sizeof(int) * n);
+	int radix = 1;
+	for (int i = 0; i < maxDigit; ++i)
+	{
+		memset(count, 0, sizeof(int) * 10);
+		for (int j = 0; j < n; ++j)
+		{
+			count[(arr[j] / radix) % 10]++;
+		}
+		for (int j = 1; j < 10; ++j)
+		{
+			count[j] += count[j - 1];
+		}
+		for (int j = n - 1; j >= 0; --j)
+		{
+			bucket[--count[(arr[j] / radix) % 10]] = arr[j];
+		}
+		memcpy(arr, bucket, sizeof(int) * n);
+		radix *= 10;
+	}
+	free(count);
+	count = NULL;
+	free(bucket);
+	bucket = NULL;
+}
+
+//Í°ÅÅÐò
+void BucketSort(int* arr, int n)
+{
+	int max = arr[0];
+	int min = arr[0];
+	for (int i = 1; i < n; ++i)
+	{
+		if (arr[i] > max)
+		{
+			max = arr[i];
+		}
+		if (arr[i] < min)
+		{
+			min = arr[i];
+		}
+	}
+	int range = max - min + 1;
+	int bucketSize = 1;
+	int bucketCount = range / bucketSize + 1;
+	int** bucket = (int**)malloc(sizeof(int*) * bucketCount);
+	for (int i = 0; i < bucketCount; ++i)
+	{
+		bucket[i] = (int*)malloc(sizeof(int) * n);
+	}
+	int* count = (int*)malloc(sizeof(int) * bucketCount);
+	memset(count, 0, sizeof(int) * bucketCount);
+	for (int i = 0; i < n; ++i)
+	{
+		int index = (arr[i] - min) / bucketSize;
+		bucket[index][count[index]++] = arr[i];
+	}
+	int index = 0;
+	for (int i = 0; i < bucketCount; ++i)
+	{
+		InsertSort(bucket[i], count[i]);
+		for (int j = 0; j < count[i]; ++j)
+		{
+			arr[index++] = bucket[i][j];
+		}
+	}
+	for (int i = 0; i < bucketCount; ++i)
+	{
+		free(bucket[i]);
+	}
+	free(bucket);
+	bucket = NULL;
+	free(count);
+	count = NULL;
+}

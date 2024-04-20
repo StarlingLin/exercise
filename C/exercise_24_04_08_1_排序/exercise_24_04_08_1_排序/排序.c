@@ -125,10 +125,26 @@ void TestCountSort()
 	PrintArray(arr, n);
 }
 
+void TestRadixSort()
+{
+	int arr[] = { 3, 9, 1, 4, 7, 5, 2, 8, 6 };
+	int n = sizeof(arr) / sizeof(arr[0]);
+	RadixSort(arr, n);
+	PrintArray(arr, n);
+}
+
+void TestBucketSort()
+{
+	int arr[] = { 3, 9, 1, 4, 7, 5, 2, 8, 6 };
+	int n = sizeof(arr) / sizeof(arr[0]);
+	BucketSort(arr, n);
+	PrintArray(arr, n);
+}
+
 void TestTime()
 {
 	srand((unsigned int)time(NULL));
-	const int N = 10000000;
+	const int N = 1000000;
 	int* arr1 = (int*)malloc(sizeof(int) * N);
 	int* arr2 = (int*)malloc(sizeof(int) * N);
 	int* arr3 = (int*)malloc(sizeof(int) * N);
@@ -144,10 +160,13 @@ void TestTime()
 	int* arr13 = (int*)malloc(sizeof(int) * N);
 	int* arr14 = (int*)malloc(sizeof(int) * N);
 	int* arr15 = (int*)malloc(sizeof(int) * N);
+	int* arr16 = (int*)malloc(sizeof(int) * N);
+	int* arr17 = (int*)malloc(sizeof(int) * N);
 
 	for (int i = 0; i < N; ++i)
 	{
-		int random = rand() % 1000 * 1000 * 1000 + rand() % 1000 * 1000 + rand() % 1000;
+		//int random = rand() % 1000 * 1000 * 1000 + rand() % 1000 * 1000 + rand() % 1000;
+		int random = rand() % 100;
 		arr1[i] = random;
 		arr2[i] = arr1[i];
 		arr3[i] = arr1[i];
@@ -163,6 +182,8 @@ void TestTime()
 		arr13[i] = arr1[i];
 		arr14[i] = arr1[i];
 		arr15[i] = arr1[i];
+		arr16[i] = arr1[i];
+		arr17[i] = arr1[i];
 		
 		//arr6[i] = i;
 		//arr7[i] = i;
@@ -204,9 +225,9 @@ void TestTime()
 	free(arr5);
 
 	start = clock();
-	QuickSort(arr6, 0, N - 1);
+	//QuickSort(arr6, 0, N - 1);
 	end = clock();
-	printf("QuickSort:%d\n", end - start);
+	//printf("QuickSort:%d\n", end - start);
 	//PrintArray(arr6, N);
 	free(arr6);
 
@@ -253,9 +274,9 @@ void TestTime()
 	free(arr13);
 
 	start = clock();
-	MergeSortNonR(arr14, N);
+	//MergeSortNonR(arr14, N);
 	end = clock();
-	printf("MergeSortNonR:%d\n", end - start);
+	//printf("MergeSortNonR:%d\n", end - start);
 	free(arr14);
 
 	start = clock();
@@ -263,6 +284,18 @@ void TestTime()
 	end = clock();
 	printf("CountSort:%d\n", end - start);
 	free(arr15);
+
+	start = clock();
+	RadixSort(arr16, N);
+	end = clock();
+	printf("RadixSort:%d\n", end - start);
+	free(arr16);
+
+	start = clock();
+	BucketSort(arr17, N);
+	end = clock();
+	printf("BucketSort:%d\n", end - start);
+	free(arr17);
 }
 
 int main()
@@ -282,6 +315,8 @@ int main()
 	TestMergeSort();
 	TestMergeSortNonR();
 	TestCountSort();
+	TestRadixSort();
+	TestBucketSort();
 	
 	TestTime();
 	return 0;

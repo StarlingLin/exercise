@@ -36,3 +36,9 @@ void MergeSortNonR(int* arr, int n);
 
 //计数排序
 void CountSort(int* arr, int n);
+
+//基数排序
+void RadixSort(int* arr, int n);
+
+//桶排序
+void BucketSort(int* arr, int n);
