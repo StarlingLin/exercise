@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+#include <time.h>
 #include "Sort.h"
 
 #define N 100000000
@@ -80,8 +81,29 @@ void MergeFile(char* file1, char* file2, char* mergeFileName)
 	rename("tmp.txt", mergeFileName);
 }
 
+void MergeFileR(int left, int right)
+{
+	if (left >= right)
+	{
+		return;
+	}
+	int mid = (left + right) / 2;
+	//递归归并
+	MergeFileR(left, mid);
+	MergeFileR(mid + 1, right);
+	//归并
+	char file1[50] = { 0 }, file2[50] = { 0 }, mergeFileName[50] = { 0 };
+	sprintf(file1, "SubSort\\sort_split%d.txt", left);
+	sprintf(file2, "SubSort\\sort_split%d.txt", mid + 1);
+	sprintf(mergeFileName, "SubSort\\sort_split%d.txt", left);
+	MergeFile(file1, file2, mergeFileName);
+	printf("已归并%d与%d文件至%d。\n", left, mid + 1, left);
+}
+
 void FileSort(const char* filename, int splitCount)
 {
+	clock_t start = clock();
+
 	//分割文件
 	FILE* fp = fopen(filename, "r");
 	if (fp == NULL)
@@ -123,19 +145,28 @@ void FileSort(const char* filename, int splitCount)
 		}
 	}
 
-	//归并文件
-	char* mergeFileName = "sort_merge.txt";
-	char file1[50] = "SubSort\\sort_split0.txt", file2[50] = {0};
-	for (int i = 1; i < splitCount; i++)
-	{
-		sprintf(file2, "SubSort\\sort_split%d.txt", i);
-		MergeFile(file1, file2, mergeFileName);
-		strcpy(file1, mergeFileName);
-		printf("已归并%d个文件，总共需归并%d个文件。\n", i + 1, splitCount);
-	}
+	//直接逐个归并文件
+	//char* mergeFileName = "sort_merge.txt";
+	//char file1[50] = "SubSort\\sort_split0.txt", file2[50] = {0};
+	//for (int i = 1; i < splitCount; i++)
+	//{
+	//	sprintf(file2, "SubSort\\sort_split%d.txt", i);
+	//	MergeFile(file1, file2, mergeFileName);
+	//	strcpy(file1, mergeFileName);
+	//	printf("已归并%d个文件，总共需归并%d个文件。\n", i + 1, splitCount);
+	//}
+
+	//分治归并文件
+	MergeFileR(0, splitCount - 1);
+	remove("SubSort\\sort_split0.txt");
 
 	//关闭文件
 	fclose(fp);
+
+	clock_t end = clock();
+
+	printf("排序完成，共%d个数据，分割为%d个文件，归并为1个文件。\n", N, splitCount);
+	printf("耗时：%f秒。\n", (double)(end - start) / CLOCKS_PER_SEC);
 }
 
 //外部排序
