@@ -20,11 +20,11 @@ void TestForLoop()
 void TestForLoopWithRange()
 {
 	int arr[] = { 1, 2, 3, 4, 5 };
-	for (int& e : arr)
+	for (auto& e : arr)
 	{
 		e *= 2;
 	}
-	for (int e : arr)
+	for (auto e : arr)
 	{
 		cout << e << " ";
 	}
