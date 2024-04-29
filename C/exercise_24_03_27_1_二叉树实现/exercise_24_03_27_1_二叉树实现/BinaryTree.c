@@ -188,3 +188,56 @@ int BinaryTreeComplete(BTNode* root)
 	QueueDestroy(&q);
 	return 1;
 }
+
+// 二叉树的镜像
+void BinaryTreeMirror(BTNode* root)
+{
+	if (root == NULL)
+	{
+		return;
+	}
+	BTNode* tmp = root->_left;
+	root->_left = root->_right;
+	root->_right = tmp;
+	BinaryTreeMirror(root->_left);
+	BinaryTreeMirror(root->_right);
+}
+
+//判断两个二叉树是否相同
+_Bool BinaryTreeIsSame(BTNode* root1, BTNode* root2)
+{
+	if (root1 == NULL && root2 == NULL)
+	{
+		return true;
+	}
+	if (root1 == NULL || root2 == NULL)
+	{
+		return false;
+	}
+	if (root1->_data != root2->_data)
+	{
+		return false;
+	}
+	return BinaryTreeIsSame(root1->_left, root2->_left) && BinaryTreeIsSame(root1->_right, root2->_right);
+}
+
+// 判断二叉树是否为另一个二叉树的子树
+_Bool BinaryTreeIsSubtree(BTNode* root1, BTNode* root2)	// root1是大树，root2是小树
+{	
+	if (root2 == NULL)
+	{
+		return true;
+	}
+	if (root1 == NULL)
+	{
+		return false;
+	}
+	if (root1->_data == root2->_data)
+	{
+		if (BinaryTreeIsSame(root1, root2))
+		{
+			return true;
+		}
+	}
+	return BinaryTreeIsSubtree(root1->_left, root2) || BinaryTreeIsSubtree(root1->_right, root2);
+}

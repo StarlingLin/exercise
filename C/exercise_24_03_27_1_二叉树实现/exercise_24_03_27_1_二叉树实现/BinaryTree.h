@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdlib.h>
+#include <stdbool.h>
 #include <string.h>
 #include <stdio.h>
 #include "Queue.h"
@@ -27,3 +28,9 @@ void BinaryTreePostOrder(BTNode* root);
 void BinaryTreeLevelOrder(BTNode* root);
 // 判断二叉树是否是完全二叉树
 int BinaryTreeComplete(BTNode* root);
+// 二叉树的镜像
+void BinaryTreeMirror(BTNode* root);
+//判断两个二叉树是否相同
+_Bool BinaryTreeIsSame(BTNode* root1, BTNode* root2);
+// 判断二叉树是否为另一个二叉树的子树
+_Bool BinaryTreeIsSubtree(BTNode* root1, BTNode* root2);
