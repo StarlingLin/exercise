@@ -4,32 +4,72 @@
 
 using namespace std;
 
-class A
+//class A
+//{
+//public:
+//	A(int a)
+//	{
+//		this->m_a = a;
+//	}
+//
+//	void print1()
+//	{
+//		cout << "a" << endl;
+//	}
+//
+//	void print2()
+//	{
+//		cout << "a = " << m_a << endl;
+//	}
+//
+//private:
+//	int m_a;
+//};
+//
+//int main()
+//{
+//	A* a = new A(10);
+//	//A* a = nullptr;
+//	a->print2();
+//	return 0;
+//}
+
+//类的六个默认成员函数
+//1.构造函数
+class Date
 {
 public:
-	A(int a)
+	Date(int year = 1900, int month = 1, int day = 1)
 	{
-		this->m_a = a;
+		m_year = year;
+		m_month = month;
+		m_day = day;
 	}
 
-	void print1()
+	void print()
 	{
-		cout << "a" << endl;
-	}
-
-	void print2()
-	{
-		cout << "a = " << m_a << endl;
+		cout << m_year << "-" << m_month << "-" << m_day << endl;
 	}
 
 private:
-	int m_a;
+	int m_year;
+	int m_month;
+	int m_day;
 };
 
 int main()
 {
-	A* a = new A(10);
-	//A* a = nullptr;
-	a->print2();
+	Date d1;
+	d1.print();
+
+	Date d2(2020, 4, 30);
+	d2.print();
+
 	return 0;
 }
+
+//2.析构函数
+//3.拷贝构造函数
+//4.拷贝赋值运算符
+//5.移动构造函数
+//6.移动赋值运算符
