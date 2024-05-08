@@ -69,6 +69,44 @@ using namespace std;
 //}
 
 //2.析构函数
+//class Date
+//{
+//public:
+//	Date(int year = 1900, int month = 1, int day = 1)
+//	{
+//		m_year = year;
+//		m_month = month;
+//		m_day = day;
+//	}
+//
+//	~Date()
+//	{
+//		cout << "析构函数" << endl;
+//	}
+//
+//	void print()
+//	{
+//		cout << m_year << "-" << m_month << "-" << m_day << endl;
+//	}
+//
+//private:
+//	int m_year;
+//	int m_month;
+//	int m_day;
+//};
+//
+//int main()
+//{
+//	Date d1;
+//	d1.print();
+//
+//	Date d2(2020, 4, 30);
+//	d2.print();
+//
+//	return 0;
+//}
+
+//3.拷贝构造函数
 class Date
 {
 public:
@@ -79,9 +117,11 @@ public:
 		m_day = day;
 	}
 
-	~Date()
+	Date(const Date& d)
 	{
-		cout << "析构函数" << endl;
+		m_year = d.m_year;
+		m_month = d.m_month;
+		m_day = d.m_day;
 	}
 
 	void print()
@@ -103,10 +143,12 @@ int main()
 	Date d2(2020, 4, 30);
 	d2.print();
 
+	Date d3(d2);
+	d3.print();
+
 	return 0;
 }
 
-//3.拷贝构造函数
 //4.拷贝赋值运算符
 //5.移动构造函数
 //6.移动赋值运算符
