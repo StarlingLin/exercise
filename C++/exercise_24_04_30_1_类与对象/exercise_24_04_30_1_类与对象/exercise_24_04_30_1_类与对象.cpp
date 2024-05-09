@@ -107,6 +107,49 @@ using namespace std;
 //}
 
 //3.拷贝构造函数
+//class Date
+//{
+//public:
+//	Date(int year = 1900, int month = 1, int day = 1)
+//	{
+//		m_year = year;
+//		m_month = month;
+//		m_day = day;
+//	}
+//
+//	Date(const Date& d)
+//	{
+//		m_year = d.m_year;
+//		m_month = d.m_month;
+//		m_day = d.m_day;
+//	}
+//
+//	void print()
+//	{
+//		cout << m_year << "-" << m_month << "-" << m_day << endl;
+//	}
+//
+//private:
+//	int m_year;
+//	int m_month;
+//	int m_day;
+//};
+//
+//int main()
+//{
+//	Date d1;
+//	d1.print();
+//
+//	Date d2(2020, 4, 30);
+//	d2.print();
+//
+//	Date d3(d2);
+//	d3.print();
+//
+//	return 0;
+//}
+
+//4.拷贝赋值运算符
 class Date
 {
 public:
@@ -122,6 +165,17 @@ public:
 		m_year = d.m_year;
 		m_month = d.m_month;
 		m_day = d.m_day;
+	}
+
+	Date& operator=(const Date& d)
+	{
+		if (this != &d)
+		{
+			m_year = d.m_year;
+			m_month = d.m_month;
+			m_day = d.m_day;
+		}
+		return *this;
 	}
 
 	void print()
@@ -146,9 +200,12 @@ int main()
 	Date d3(d2);
 	d3.print();
 
+	Date d4;
+	d4 = d2;
+	d4.print();
+
 	return 0;
 }
 
-//4.拷贝赋值运算符
 //5.移动构造函数
 //6.移动赋值运算符
