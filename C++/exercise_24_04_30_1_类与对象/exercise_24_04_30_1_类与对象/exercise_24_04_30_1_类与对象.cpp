@@ -258,63 +258,63 @@ using namespace std;
  
 
 //6.ÒÆ¶¯¸³ÖµÔËËã·û
-class Date
-{
-public:
-	Date(int year = 1900, int month = 1, int day = 1)
-	{
-		m_year = year;
-		m_month = month;
-		m_day = day;
-	}
-
-	Date(Date&& d)
-	{
-		m_year = d.m_year;
-		m_month = d.m_month;
-		m_day = d.m_day;
-		d.m_year = 0;
-		d.m_month = 0;
-		d.m_day = 0;
-	}
-
-	Date& operator=(Date&& d)
-	{
-		if (this != &d)
-		{
-			m_year = d.m_year;
-			m_month = d.m_month;
-			m_day = d.m_day;
-			d.m_year = 0;
-			d.m_month = 0;
-			d.m_day = 0;
-		}
-		return *this;
-	}
-
-	void print()
-	{
-		cout << m_year << "-" << m_month << "-" << m_day << endl;
-	}
-
-private:
-	int m_year;
-	int m_month;
-	int m_day;
-};
-
-int main()
-{
-	Date d1;
-	d1.print();
-
-	Date d2(2020, 4, 30);
-	d2.print();
-
-	Date d3;
-	d3 = std::move(d2);
-	d3.print();
-	d2.print();
-
-	return 0;
-}
+//class Date
+//{
+//public:
+//	Date(int year = 1900, int month = 1, int day = 1)
+//	{
+//		m_year = year;
+//		m_month = month;
+//		m_day = day;
+//	}
+//
+//	Date(Date&& d)
+//	{
+//		m_year = d.m_year;
+//		m_month = d.m_month;
+//		m_day = d.m_day;
+//		d.m_year = 0;
+//		d.m_month = 0;
+//		d.m_day = 0;
+//	}
+//
+//	Date& operator=(Date&& d)
+//	{
+//		if (this != &d)
+//		{
+//			m_year = d.m_year;
+//			m_month = d.m_month;
+//			m_day = d.m_day;
+//			d.m_year = 0;
+//			d.m_month = 0;
+//			d.m_day = 0;
+//		}
+//		return *this;
+//	}
+//
+//	void print()
+//	{
+//		cout << m_year << "-" << m_month << "-" << m_day << endl;
+//	}
+//
+//private:
+//	int m_year;
+//	int m_month;
+//	int m_day;
+//};
+//
+//int main()
+//{
+//	Date d1;
+//	d1.print();
+//
+//	Date d2(2020, 4, 30);
+//	d2.print();
+//
+//	Date d3;
+//	d3 = std::move(d2);
+//	d3.print();
+//	d2.print();
+//
+//	return 0;
+//}
