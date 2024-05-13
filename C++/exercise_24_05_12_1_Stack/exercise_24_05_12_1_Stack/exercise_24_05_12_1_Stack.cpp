@@ -16,6 +16,9 @@ int main()
 	stack.Push(5);
 	stack.Push(6);
 
+	cout << stack.GetSize() << endl;
+	cout << stack.Top() << endl;
+
 	cout << stack.Pop() << endl;
 	cout << stack.Pop() << endl;
 	cout << stack.Pop() << endl;
