@@ -18,6 +18,8 @@ int main()
 
 	cout << stack.GetSize() << endl;
 	cout << stack.Top() << endl;
+	cout << stack.IsFull() << endl;
+	cout << stack.IsEmpty() << endl;
 
 	cout << stack.Pop() << endl;
 	cout << stack.Pop() << endl;
