@@ -13,6 +13,9 @@ public:
 		, day(day)
 	{}
 
+	~Date()
+	{}
+
 	void print()
 	{
 		cout << year << "-" << month << "-" << day << endl;
