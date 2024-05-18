@@ -3,6 +3,8 @@
 #include <iostream>
 #include "Date.h"
 
+using namespace std;
+
 Date::Date(int year, int month, int day)
 {
 	m_year = year;

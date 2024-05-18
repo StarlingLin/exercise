@@ -28,7 +28,7 @@ public:
 	bool operator>=(const Date& date) const;
 	int operator-(const Date& date) const;
 
-	Print() const;
+	void Print() const;
 
 private:
 	int m_year;
