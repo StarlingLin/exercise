@@ -1,24 +1,24 @@
 #pragma once
 
-// 继承方式 2 : 行车记录仪的芯片可以使用摄像机的拍摄、图像质量设定功能。行车记录仪用户仅仅可以操作行车记录仪的操作菜单。
+// 组合方式，私有继承
 
 #include <string>
 
 using namespace std;
 
-class Product_2
+class Product_4
 {
 public:
-	virtual ~Product_2();
+	virtual ~Product_4();
 
 	virtual void capture() = 0;
 };
 
-class Camera_2 : public Product_2
+class Camera_4 : public Product_4
 {
 public:
-	Camera_2(string resolution = "1920*1080", string algorithm = "H.264", float EV = 4.0);
-	~Camera_2();
+	Camera_4(string resolution = "1920*1080", string algorithm = "H.264", float EV = 4.0);
+	~Camera_4();
 
 	void setResolution(string resolution);
 	string getResolution();
@@ -37,11 +37,11 @@ private:
 	float EV;			// 曝光补偿值
 };
 
-class Dashcam_2 : private Camera_2
+class Dashcam_4 : public Product_4
 {
 public:
-	Dashcam_2(string resolution = "1920*1080", string algorithm = "H.264", float EV = 4.0, string menu = "Default", bool autoShoot = false, float speed = 0.0);
-	~Dashcam_2();
+	Dashcam_4(string resolution = "1920*1080", string algorithm = "H.264", float EV = 4.0, string menu = "Default", bool autoShoot = false, float speed = 0.0);
+	~Dashcam_4();
 
 	void setMenu(string menu);
 	string getMenu();
@@ -55,6 +55,7 @@ public:
 	void capture();
 
 private:
+	Camera_4 camera;
 	string menu;		// 操作菜单
 	bool autoShoot;		// 自动拍摄
 	float speed;		// 车速传感器
