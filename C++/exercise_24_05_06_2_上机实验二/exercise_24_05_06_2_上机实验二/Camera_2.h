@@ -31,13 +31,13 @@ public:
 
 	void capture();
 
-protected:
+private:
 	string resolution;	// 分辨率
 	string algorithm;	// 编码算法
 	float EV;			// 曝光补偿值
 };
 
-class Dashcam_2 : public Camera_2
+class Dashcam_2 : private Camera_2
 {
 public:
 	Dashcam_2(string resolution = "1920*1080", string algorithm = "H.264", float EV = 4.0, string menu = "Default", bool autoShoot = false, float speed = 0.0);

@@ -1,5 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 
+// 继承方式 2 : 行车记录仪的芯片可以使用摄像机的拍摄、图像质量设定功能。行车记录仪用户仅仅可以操作行车记录仪的操作菜单。
+
 #include <iostream>
 #include "Camera_2.h"
 

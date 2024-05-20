@@ -44,6 +44,9 @@ void Test1()
 	//cout << "New Algorithm: " << dashcam.getAlgorithm() << endl;
 	//dashcam.capture();
 
+	//Dashcam_1 dashcam("2560*1440", "H.265", 5.0, "Custom", true, 60.0);
+	//dashcam.setAlgorithm("H.264");	//ok
+
 	vector<Product_1*> products_1;
 	products_1.push_back(new Camera_1("2560*1440", "H.265", 5.0));
 	products_1.push_back(new Dashcam_1("2560*1440", "H.265", 5.0, "Custom", true, 60.0));
@@ -57,9 +60,28 @@ void Test1()
 	}
 }
 
+void Test2()
+{
+	//Dashcam_2 dashcam("2560*1440", "H.265", 5.0, "Custom", true, 60.0);
+	//dashcam.setAlgorithm("H.264");	//error - 符合题意
+
+	vector<Product_2*> products_2;
+	products_2.push_back(new Camera_2("2560*1440", "H.265", 5.0));
+	products_2.push_back(new Dashcam_2("2560*1440", "H.265", 5.0, "Custom", true, 60.0));
+	for (const auto& product : products_2)
+	{
+		product->capture();
+	}
+	for (const auto& product : products_2)
+	{
+		delete product;
+	}
+}
+
 int main()
 {
-	Test1();	// 继承方式 1 : 行车记录仪的芯片可以使用摄像机的摄像、图像质量设定功能。行车记录仪用户可以操作行车记录仪的操作菜单和摄像机的摄像功能。
+	//Test1();	// 继承方式 1 : 行车记录仪的芯片可以使用摄像机的摄像、图像质量设定功能。行车记录仪用户可以操作行车记录仪的操作菜单和摄像机的摄像功能。
+	Test2();	// 继承方式 2 : 行车记录仪的芯片可以使用摄像机的拍摄、图像质量设定功能。行车记录仪用户仅仅可以操作行车记录仪的操作菜单。
 
 	return 0;
 }
