@@ -14,60 +14,60 @@ int main()
 	Date date5(2018, 5, 24);
 	Date date6(2016, 5, 24);
 
-	std::cout << "date1: ";
+	cout << "date1: ";
 	date1.Print();
-	std::cout << "date2: ";
+	cout << "date2: ";
 	date2.Print();
-	std::cout << "date3: ";
+	cout << "date3: ";
 	date3.Print();
-	std::cout << "date4: ";
+	cout << "date4: ";
 	date4.Print();
-	std::cout << "date5: ";
+	cout << "date5: ";
 	date5.Print();
-	std::cout << "date6: ";
+	cout << "date6: ";
 	date6.Print();
 
-	std::cout << "date1 == date2: " << (date1 == date2) << std::endl;
-	std::cout << "date1 == date3: " << (date1 == date3) << std::endl;
-	std::cout << "date1 == date4: " << (date1 == date4) << std::endl;
-	std::cout << "date1 == date5: " << (date1 == date5) << std::endl;
-	std::cout << "date1 == date6: " << (date1 == date6) << std::endl;
+	cout << "date1 == date2: " << (date1 == date2) << endl;
+	cout << "date1 == date3: " << (date1 == date3) << endl;
+	cout << "date1 == date4: " << (date1 == date4) << endl;
+	cout << "date1 == date5: " << (date1 == date5) << endl;
+	cout << "date1 == date6: " << (date1 == date6) << endl;
 
-	std::cout << "date1 != date2: " << (date1 != date2) << std::endl;
-	std::cout << "date1 != date3: " << (date1 != date3) << std::endl;
-	std::cout << "date1 != date4: " << (date1 != date4) << std::endl;
-	std::cout << "date1 != date5: " << (date1 != date5) << std::endl;
-	std::cout << "date1 != date6: " << (date1 != date6) << std::endl;
+	cout << "date1 != date2: " << (date1 != date2) << endl;
+	cout << "date1 != date3: " << (date1 != date3) << endl;
+	cout << "date1 != date4: " << (date1 != date4) << endl;
+	cout << "date1 != date5: " << (date1 != date5) << endl;
+	cout << "date1 != date6: " << (date1 != date6) << endl;
 
-	std::cout << "date1 < date2: " << (date1 < date2) << std::endl;
-	std::cout << "date1 < date3: " << (date1 < date3) << std::endl;
-	std::cout << "date1 < date4: " << (date1 < date4) << std::endl;
-	std::cout << "date1 < date5: " << (date1 < date5) << std::endl;
-	std::cout << "date1 < date6: " << (date1 < date6) << std::endl;
+	cout << "date1 < date2: " << (date1 < date2) << endl;
+	cout << "date1 < date3: " << (date1 < date3) << endl;
+	cout << "date1 < date4: " << (date1 < date4) << endl;
+	cout << "date1 < date5: " << (date1 < date5) << endl;
+	cout << "date1 < date6: " << (date1 < date6) << endl;
 
-	std::cout << "date1 > date2: " << (date1 > date2) << std::endl;
-	std::cout << "date1 > date3: " << (date1 > date3) << std::endl;
-	std::cout << "date1 > date4: " << (date1 > date4) << std::endl;
-	std::cout << "date1 > date5: " << (date1 > date5) << std::endl;
-	std::cout << "date1 > date6: " << (date1 > date6) << std::endl;
+	cout << "date1 > date2: " << (date1 > date2) << endl;
+	cout << "date1 > date3: " << (date1 > date3) << endl;
+	cout << "date1 > date4: " << (date1 > date4) << endl;
+	cout << "date1 > date5: " << (date1 > date5) << endl;
+	cout << "date1 > date6: " << (date1 > date6) << endl;
 
-	std::cout << "date1 <= date2: " << (date1 <= date2) << std::endl;
-	std::cout << "date1 <= date3: " << (date1 <= date3) << std::endl;
-	std::cout << "date1 <= date4: " << (date1 <= date4) << std::endl;
-	std::cout << "date1 <= date5: " << (date1 <= date5) << std::endl;
-	std::cout << "date1 <= date6: " << (date1 <= date6) << std::endl;
+	cout << "date1 <= date2: " << (date1 <= date2) << endl;
+	cout << "date1 <= date3: " << (date1 <= date3) << endl;
+	cout << "date1 <= date4: " << (date1 <= date4) << endl;
+	cout << "date1 <= date5: " << (date1 <= date5) << endl;
+	cout << "date1 <= date6: " << (date1 <= date6) << endl;
 
-	std::cout << "date1 >= date2: " << (date1 >= date2) << std::endl;
-	std::cout << "date1 >= date3: " << (date1 >= date3) << std::endl;
-	std::cout << "date1 >= date4: " << (date1 >= date4) << std::endl;
-	std::cout << "date1 >= date5: " << (date1 >= date5) << std::endl;
-	std::cout << "date1 >= date6: " << (date1 >= date6) << std::endl;
+	cout << "date1 >= date2: " << (date1 >= date2) << endl;
+	cout << "date1 >= date3: " << (date1 >= date3) << endl;
+	cout << "date1 >= date4: " << (date1 >= date4) << endl;
+	cout << "date1 >= date5: " << (date1 >= date5) << endl;
+	cout << "date1 >= date6: " << (date1 >= date6) << endl;
 
-	std::cout << "date1 - date2: " << (date1 - date2) << std::endl;
-	std::cout << "date1 - date3: " << (date1 - date3) << std::endl;
-	std::cout << "date1 - date4: " << (date1 - date4) << std::endl;
-	std::cout << "date1 - date5: " << (date1 - date5) << std::endl;
-	std::cout << "date1 - date6: " << (date1 - date6) << std::endl;
+	cout << "date1 - date2: " << (date1 - date2) << endl;
+	cout << "date1 - date3: " << (date1 - date3) << endl;
+	cout << "date1 - date4: " << (date1 - date4) << endl;
+	cout << "date1 - date5: " << (date1 - date5) << endl;
+	cout << "date1 - date6: " << (date1 - date6) << endl;
 
 	return 0;
 }

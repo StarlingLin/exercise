@@ -255,5 +255,5 @@ int Date::operator-(const Date& date) const
 
 void Date::Print() const
 {
-	std::cout << m_year << "-" << m_month << "-" << m_day << std::endl;
+	cout << m_year << "-" << m_month << "-" << m_day << endl;
 }
