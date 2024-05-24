@@ -166,9 +166,12 @@ Date Date::operator--(int)
 
 Date& Date::operator=(const Date& date)
 {
-	m_year = date.m_year;
-	m_month = date.m_month;
-	m_day = date.m_day;
+	if (this != &date)
+	{
+		m_year = date.m_year;
+		m_month = date.m_month;
+		m_day = date.m_day;
+	}
 	return *this;
 }
 
