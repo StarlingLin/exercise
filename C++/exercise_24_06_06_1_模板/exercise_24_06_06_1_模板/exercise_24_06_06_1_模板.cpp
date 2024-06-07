@@ -4,6 +4,13 @@
 
 using namespace std;
 
+void Swap(int& a, int& b)
+{
+	int temp = a;
+	a = b;
+	b = temp;
+}
+
 template <typename T>
 void Swap(T& a, T& b)
 {
@@ -21,7 +28,7 @@ int main()
 
 	double c = 1.1, d = 2.2;
 	cout << "c = " << c << ", d = " << d << endl;
-	Swap(c, d);
+	Swap<double>(c, d);
 	cout << "c = " << c << ", d = " << d << endl;
 
 	return 0;
