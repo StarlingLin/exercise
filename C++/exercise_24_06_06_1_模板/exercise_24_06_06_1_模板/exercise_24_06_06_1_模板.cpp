@@ -23,13 +23,18 @@ int main()
 {
 	int a = 10, b = 20;
 	cout << "a = " << a << ", b = " << b << endl;
-	Swap(a, b);
+	Swap<int>(a, b);
 	cout << "a = " << a << ", b = " << b << endl;
 
 	double c = 1.1, d = 2.2;
 	cout << "c = " << c << ", d = " << d << endl;
-	Swap<double>(c, d);
+	Swap(c, d);
 	cout << "c = " << c << ", d = " << d << endl;
+
+	double e = 1.1, f = 2.2;
+	cout << "e = " << e << ", f = " << f << endl;
+	Swap(e, f);
+	cout << "e = " << e << ", f = " << f << endl;
 
 	return 0;
 }
