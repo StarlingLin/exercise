@@ -44,3 +44,31 @@ int main()
 
 	return 0;
 }
+
+//class A
+//{
+//public:
+//    A(int a = 0)
+//        : m_a(a)
+//    {
+//        cout << "A" << endl;
+//    }
+//
+//    ~A()
+//    {
+//        cout << "~A" << endl;
+//    }
+//
+//private:
+//    int m_a;
+//};
+//
+//int main()
+//{
+//    A* oA = new A;
+//    delete oA;
+//    A* oB = (A*)malloc(sizeof(A));
+//    free(oB);
+//
+//    return 0;
+//}
