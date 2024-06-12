@@ -19,6 +19,33 @@ void Swap(T& a, T& b)
 	b = temp;
 }
 
+template <class T>
+class A
+{
+public:
+	A(T& a)
+		: m_a(a)
+	{
+		cout << "constructing A with: " << m_a << endl;
+	}
+
+	~A()
+	{
+		cout << "destructing A" << endl;
+	}
+
+	void Print();
+
+private:
+	T m_a;
+};
+
+template <class T>
+void A<T>::Print()
+{
+	cout << m_a << endl;
+}
+
 int main()
 {
 	int a = 10, b = 20;
@@ -35,6 +62,9 @@ int main()
 	cout << "e = " << e << ", f = " << f << endl;
 	Swap(e, f);
 	cout << "e = " << e << ", f = " << f << endl;
+
+	A<int> a1(a);
+	a1.Print();
 
 	return 0;
 }
