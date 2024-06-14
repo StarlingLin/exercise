@@ -12,12 +12,12 @@ int main()
 	getline(cin, str);
 
 	int count = 0;
+	char prev = ' ';
 	for (int i = 0; i < str.length(); i++)
 	{
-		if (str[i] == ' ')
-		{
+		if (str[i] == ' ' && prev != ' ')
 			count++;
-		}
+		prev = str[i];
 	}
 
 	cout << "Number of words: " << count + 1 << endl;
