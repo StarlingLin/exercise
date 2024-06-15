@@ -5,22 +5,33 @@
 
 using namespace std;
 
+//int main()
+//{
+//	string str;
+//	cout << "Enter a string: ";
+//	getline(cin, str);
+//
+//	int count = 0;
+//	char prev = ' ';
+//	for (int i = 0; i < str.length(); i++)
+//	{
+//		if (str[i] == ' ' && prev != ' ')
+//			count++;
+//		prev = str[i];
+//	}
+//
+//	cout << "Number of words: " << count + 1 << endl;
+//
+//	return 0;
+//}
+
 int main()
 {
-	string str;
-	cout << "Enter a string: ";
-	getline(cin, str);
-
-	int count = 0;
-	char prev = ' ';
-	for (int i = 0; i < str.length(); i++)
-	{
-		if (str[i] == ' ' && prev != ' ')
-			count++;
-		prev = str[i];
-	}
-
-	cout << "Number of words: " << count + 1 << endl;
-
+	string str("Hello World.");
+	str.reserve(111);
+	str.resize(5);
+	str.reserve(50);
+	cout << str.size() << ":" << str.capacity() << endl;
+	
 	return 0;
 }
