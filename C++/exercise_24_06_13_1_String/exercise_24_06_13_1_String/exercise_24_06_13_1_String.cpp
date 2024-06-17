@@ -25,13 +25,58 @@ using namespace std;
 //	return 0;
 //}
 
+//int main()
+//{
+//	string str("Hello World.");
+//	str.reserve(111);
+//	str.resize(5);
+//	str.reserve(50);
+//	cout << str.size() << ":" << str.capacity() << endl;
+//	
+//	return 0;
+//}
+
+class Solution {
+public:
+	bool isLetter(char ch)
+	{
+		if (ch >= 'a' && ch <= 'z')
+			return true;
+		if (ch >= 'A' && ch <= 'Z')
+			return true;
+		return false;
+	}
+	string reverseOnlyLetters(string S) {
+		if (S.empty())
+			return S;
+
+		size_t begin = 0, end = S.size() - 1;
+		while (begin < end)
+		{
+			while (begin < end && !isLetter(S[begin]))
+				++begin;
+
+			while (begin < end && !isLetter(S[end]))
+				--end;
+			swap(S[begin], S[end]);
+			++begin;
+			--end;
+		}
+		return S;
+	}
+};
+
 int main()
 {
-	string str("Hello World.");
-	str.reserve(111);
-	str.resize(5);
-	str.reserve(50);
-	cout << str.size() << ":" << str.capacity() << endl;
-	
+	Solution solution;
+	string str("ab-cd");
+	cout << solution.reverseOnlyLetters(str) << endl;
+
+	str = "a-bC-dEf-ghIj";
+	cout << solution.reverseOnlyLetters(str) << endl;
+
+	str = "Test1ng-Leet=code-Q!";
+	cout << solution.reverseOnlyLetters(str) << endl;
+
 	return 0;
 }
