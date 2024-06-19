@@ -81,31 +81,49 @@ using namespace std;
 //	return 0;
 //}
 
-class Solution {
-public:
-	int firstUniqChar(string s) {
-		// 统计每个字符出现的次数
-		int count[256] = { 0 };
-		int size = s.size();
-		for (int i = 0; i < size; ++i)
-			count[s[i]] += 1;
+//class Solution {
+//public:
+//	int firstUniqChar(string s) {
+//		// 统计每个字符出现的次数
+//		int count[256] = { 0 };
+//		int size = s.size();
+//		for (int i = 0; i < size; ++i)
+//			count[s[i]] += 1;
+//
+//		// 按照字符次序从前往后找只出现一次的字符
+//		for (int i = 0; i < size; ++i)
+//			if (1 == count[s[i]])
+//				return i;
+//		return -1;
+//	}
+//};
+//
+//int main()
+//{
+//	Solution solution;
+//	string str("leetcode");
+//	cout << solution.firstUniqChar(str) << endl;
+//
+//	str = "loveleetcode";
+//	cout << solution.firstUniqChar(str) << endl;
+//
+//	return 0;
+//}
 
-		// 按照字符次序从前往后找只出现一次的字符
-		for (int i = 0; i < size; ++i)
-			if (1 == count[s[i]])
-				return i;
-		return -1;
-	}
-};
+#include<iostream>
+#include<string>
+
+using namespace std;
 
 int main()
 {
-	Solution solution;
-	string str("leetcode");
-	cout << solution.firstUniqChar(str) << endl;
-
-	str = "loveleetcode";
-	cout << solution.firstUniqChar(str) << endl;
-
+	string line;
+	// 不要使用cin>>line,因为会它遇到空格就结束了
+	// while(cin>>line)
+	while (getline(cin, line))
+	{
+		size_t pos = line.rfind(' ');
+		cout << line.size() - pos - 1 << endl;
+	}
 	return 0;
 }
