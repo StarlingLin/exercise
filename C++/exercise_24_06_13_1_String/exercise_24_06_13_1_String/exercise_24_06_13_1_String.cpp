@@ -110,20 +110,74 @@ using namespace std;
 //	return 0;
 //}
 
-#include<iostream>
-#include<string>
+//#include<iostream>
+//#include<string>
+//
+//using namespace std;
+//
+//int main()
+//{
+//	string line;
+//	// 不要使用cin>>line,因为会它遇到空格就结束了
+//	// while(cin>>line)
+//	while (getline(cin, line))
+//	{
+//		size_t pos = line.rfind(' ');
+//		cout << line.size() - pos - 1 << endl;
+//	}
+//	return 0;
+//}
 
-using namespace std;
+class Solution {
+public:
+	bool isLetterOrNumber(char ch)
+	{
+		return (ch >= '0' && ch <= '9')
+			|| (ch >= 'a' && ch <= 'z')
+			|| (ch >= 'A' && ch <= 'Z');
+	}
+
+	bool isPalindrome(string s) {
+		// 先小写字母转换成大写，再进行判断
+		for (auto& ch : s)
+		{
+			if (ch >= 'a' && ch <= 'z')
+				ch -= 32;
+		}
+
+		int begin = 0, end = s.size() - 1;
+		while (begin < end)
+		{
+			while (begin < end && !isLetterOrNumber(s[begin]))
+				++begin;
+
+			while (begin < end && !isLetterOrNumber(s[end]))
+				--end;
+
+			if (s[begin] != s[end])
+			{
+				return false;
+			}
+			else
+			{
+
+				++begin;
+				--end;
+			}
+		}
+
+		return true;
+	}
+};
 
 int main()
 {
-	string line;
-	// 不要使用cin>>line,因为会它遇到空格就结束了
-	// while(cin>>line)
-	while (getline(cin, line))
+	Solution solution;
+	string str;
+	while (getline(cin, str))
 	{
-		size_t pos = line.rfind(' ');
-		cout << line.size() - pos - 1 << endl;
+		cout << solution.isPalindrome(str) << endl;
 	}
+
 	return 0;
 }
