@@ -128,55 +128,115 @@ using namespace std;
 //	return 0;
 //}
 
+//class Solution {
+//public:
+//	bool isLetterOrNumber(char ch)
+//	{
+//		return (ch >= '0' && ch <= '9')
+//			|| (ch >= 'a' && ch <= 'z')
+//			|| (ch >= 'A' && ch <= 'Z');
+//	}
+//
+//	bool isPalindrome(string s) {
+//		// 先小写字母转换成大写，再进行判断
+//		for (auto& ch : s)
+//		{
+//			if (ch >= 'a' && ch <= 'z')
+//				ch -= 32;
+//		}
+//
+//		int begin = 0, end = s.size() - 1;
+//		while (begin < end)
+//		{
+//			while (begin < end && !isLetterOrNumber(s[begin]))
+//				++begin;
+//
+//			while (begin < end && !isLetterOrNumber(s[end]))
+//				--end;
+//
+//			if (s[begin] != s[end])
+//			{
+//				return false;
+//			}
+//			else
+//			{
+//
+//				++begin;
+//				--end;
+//			}
+//		}
+//
+//		return true;
+//	}
+//};
+//
+//int main()
+//{
+//	Solution solution;
+//	string str;
+//	while (getline(cin, str))
+//	{
+//		cout << solution.isPalindrome(str) << endl;
+//	}
+//
+//	return 0;
+//}
+
 class Solution {
 public:
-	bool isLetterOrNumber(char ch)
+	string addstrings(string num1, string num2)
 	{
-		return (ch >= '0' && ch <= '9')
-			|| (ch >= 'a' && ch <= 'z')
-			|| (ch >= 'A' && ch <= 'Z');
-	}
-
-	bool isPalindrome(string s) {
-		// 先小写字母转换成大写，再进行判断
-		for (auto& ch : s)
+		// 从后往前相加，相加的结果到字符串可以使用insert头插
+		// 或者+=尾插以后再reverse过来
+		int end1 = num1.size() - 1;
+		int end2 = num2.size() - 1;
+		int value1 = 0, value2 = 0, next = 0;
+		string addret;
+		while (end1 >= 0 || end2 >= 0)
 		{
-			if (ch >= 'a' && ch <= 'z')
-				ch -= 32;
-		}
+			if (end1 >= 0)
+				value1 = num1[end1--] - '0';
+			else
+				value1 = 0;
 
-		int begin = 0, end = s.size() - 1;
-		while (begin < end)
-		{
-			while (begin < end && !isLetterOrNumber(s[begin]))
-				++begin;
+			if (end2 >= 0)
+				value2 = num2[end2--] - '0';
+			else
+				value2 = 0;
 
-			while (begin < end && !isLetterOrNumber(s[end]))
-				--end;
-
-			if (s[begin] != s[end])
+			int valueret = value1 + value2 + next;
+			if (valueret > 9)
 			{
-				return false;
+				next = 1;
+				valueret -= 10;
 			}
 			else
 			{
-
-				++begin;
-				--end;
+				next = 0;
 			}
+
+			//addret.insert(addret.begin(), valueret+'0');
+			addret += (valueret + '0');
 		}
 
-		return true;
+		if (next == 1)
+		{
+			//addret.insert(addret.begin(), '1');
+			addret += '1';
+		}
+
+		reverse(addret.begin(), addret.end());
+		return addret;
 	}
 };
 
 int main()
 {
 	Solution solution;
-	string str;
-	while (getline(cin, str))
+	string num1, num2;
+	while (cin >> num1 >> num2)
 	{
-		cout << solution.isPalindrome(str) << endl;
+		cout << solution.addstrings(num1, num2) << endl;
 	}
 
 	return 0;
