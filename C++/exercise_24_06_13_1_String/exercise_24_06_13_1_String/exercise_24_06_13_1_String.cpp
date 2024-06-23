@@ -258,9 +258,10 @@ public:
 	}
 
 	String(const String& s)
+		:_str(nullptr)
 	{
-		_str = new char[strlen(s._str) + 1];
-		strcpy(_str, s._str);
+		String tmp(s._str);
+		swap(_str, tmp._str);
 	}
 
 	~String()
@@ -272,15 +273,9 @@ public:
 		}
 	}
 
-	String& operator=(const String& s)
+	String& operator=(String& s)
 	{
-		if (this != &s)
-		{
-			char* tmp = new char[strlen(s._str) + 1];
-			strcpy(tmp, s._str);
-			delete[] _str;
-			_str = tmp;
-		}
+		swap(_str, s._str);
 		return *this;
 	}
 
@@ -290,8 +285,10 @@ private:
 
 void TestString()
 {
-	String s1("hello world!!!");
+	String s1("hello");
 	String s2(s1);
+	String s3;
+	s3 = s1;
 }
 
 int main()
