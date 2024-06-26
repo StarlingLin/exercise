@@ -23,11 +23,23 @@ public:
 	}
 };
 
+//int main()
+//{
+//	Solution solution;
+//	string s = "abcdefg";
+//	int k = 2;
+//	cout << solution.reverseStr(s, k) << endl;
+//	return 0;
+//}
+
 int main()
 {
 	Solution solution;
-	string s = "abcdefg";
-	int k = 2;
-	cout << solution.reverseStr(s, k) << endl;
+	string s;
+	int k;
+	while (cin >> s >> k)
+	{
+		cout << solution.reverseStr(s, k) << endl;
+	}
 	return 0;
 }
