@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class Solution 
+class Solution
 {
 public:
 	string reverseStr(string s, int k)
