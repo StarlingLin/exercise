@@ -243,56 +243,56 @@ using namespace std;
 //	return 0;
 //}
 
-class String
-{
-public:
-	String(const char* str = "")
-	{
-		if (nullptr == str)
-		{
-			assert(false);
-			return;
-		}
-		_str = new char[strlen(str) + 1];
-		strcpy(_str, str);
-	}
-
-	String(const String& s)
-		:_str(nullptr)
-	{
-		String tmp(s._str);
-		swap(_str, tmp._str);
-	}
-
-	~String()
-	{
-		if (_str)
-		{
-			delete[] _str;
-			_str = nullptr;
-		}
-	}
-
-	String& operator=(String& s)
-	{
-		swap(_str, s._str);
-		return *this;
-	}
-
-private:
-	char* _str;
-};
-
-void TestString()
-{
-	String s1("hello");
-	String s2(s1);
-	String s3;
-	s3 = s1;
-}
-
-int main()
-{
-	TestString();
-	return 0;
-}
+//class String
+//{
+//public:
+//	String(const char* str = "")
+//	{
+//		if (nullptr == str)
+//		{
+//			assert(false);
+//			return;
+//		}
+//		_str = new char[strlen(str) + 1];
+//		strcpy(_str, str);
+//	}
+//
+//	String(const String& s)
+//		:_str(nullptr)
+//	{
+//		String tmp(s._str);
+//		swap(_str, tmp._str);
+//	}
+//
+//	~String()
+//	{
+//		if (_str)
+//		{
+//			delete[] _str;
+//			_str = nullptr;
+//		}
+//	}
+//
+//	String& operator=(String& s)
+//	{
+//		swap(_str, s._str);
+//		return *this;
+//	}
+//
+//private:
+//	char* _str;
+//};
+//
+//void TestString()
+//{
+//	String s1("hello");
+//	String s2(s1);
+//	String s3;
+//	s3 = s1;
+//}
+//
+//int main()
+//{
+//	TestString();
+//	return 0;
+//}
