@@ -5,28 +5,58 @@
 
 using namespace std;
 
+//class Solution 
+//{
+//public:
+//    vector<vector<int>> modifiedMatrix(vector<vector<int>>& matrix) 
+//    {
+//        for (int j = 0; j < matrix[0].size(); j++) 
+//        {
+//            int mx = 0;
+//            for (auto& row : matrix) 
+//            {
+//                mx = max(mx, row[j]);
+//            }
+//            for (auto& row : matrix) 
+//            {
+//                if (row[j] == -1) 
+//                {
+//                    row[j] = mx;
+//                }
+//            }
+//        }
+//        return matrix;
+//    }
+//};
+
 class Solution 
 {
 public:
-    vector<vector<int>> modifiedMatrix(vector<vector<int>>& matrix) 
-    {
-        for (int j = 0; j < matrix[0].size(); j++) 
-        {
-            int mx = 0;
-            for (auto& row : matrix) 
-            {
-                mx = max(mx, row[j]);
-            }
-            for (auto& row : matrix) 
-            {
-                if (row[j] == -1) 
-                {
-                    row[j] = mx;
-                }
-            }
-        }
-        return matrix;
-    }
+	vector<vector<int>> modifiedMatrix(vector<vector<int>>& matrix)
+	{
+		int rows = matrix.size();
+		int cols = matrix[0].size();
+		vector<vector<int>> result(rows, vector<int>(cols, 0));
+		for (int i = 0; i < rows; i++)
+		{
+			for (int j = 0; j < cols; j++)
+			{
+				if (matrix[i][j] == -1)
+				{
+					for (int k = 0; k < cols; k++)
+					{
+						result[i][k] = matrix[i][k];
+					}
+					for (int k = 0; k < rows; k++)
+					{
+						result[k][j] = matrix[k][j];
+					}
+				}
+			}
+		}
+		return result;
+	}
+
 };
 
 int main() {
