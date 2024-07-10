@@ -7,26 +7,49 @@
 
 using namespace std;
 
-string removeSame(string str) 
+//时间复杂度过高，舍弃
+//string removeSame(string str) 
+//{
+//	bool flag = true;	//标记是否有相邻的相同字符
+//	while (flag)
+//	{
+//		flag = false;
+//		for (int i = 0; i < str.size(); i++)
+//		{
+//			if (str[i] == str[i + 1])
+//			{
+//				str.erase(i, 2);
+//				flag = true;
+//			}
+//		}
+//	}
+//	if (str.empty())
+//	{
+//		return "0";
+//	}
+//	return str;
+//}
+
+//时间复杂度为O(n)
+string removeSame(string str)
 {
-	bool flag = true;	//标记是否有相邻的相同字符
-	while (flag)
+	string res;
+	for (int i = 0; i < str.size(); i++)
 	{
-		flag = false;
-		for (int i = 0; i < str.size(); i++)
+		if (res.empty() || res.back() != str[i])	//栈为空或者栈顶元素与当前元素不相等
 		{
-			if (str[i] == str[i + 1])
-			{
-				str.erase(i, 2);
-				flag = true;
-			}
+			res.push_back(str[i]);
+		}
+		else
+		{
+			res.pop_back();
 		}
 	}
-	if (str.empty())
+	if (res.empty())
 	{
 		return "0";
 	}
-	return str;
+	return res;
 }
 
 int main()
