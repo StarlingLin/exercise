@@ -21,7 +21,7 @@
 
 using namespace std;
 
-class Solution 
+class Solution
 {
 public:
 	bool dfs(vector<string>& board, string& word, int index, int i, int j, vector<vector<bool>>& visited)
