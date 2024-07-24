@@ -38,28 +38,29 @@ using namespace std;
 //	}
 //};
 
-class Solution
-{
-public:
-	int MLS(vector<int>& arr)
-	{
-		int ans = 0;
-		int lenmax = 0;
-		for (int i = 0; i < arr.size(); i++)
-		{
-			int len = 1;
-			int j = arr[i];
-			while (find(arr.begin(), arr.end(), j + 1) != arr.end())
-			{
-				len++;
-				j++;
-			}
-			if (len > lenmax)
-			{
-				lenmax = len;
-				ans = lenmax;
-			}
-		}
-		return ans;
-	}
-};
+//复杂度过高O(n^2)，超时
+//class Solution
+//{
+//public:
+//	int MLS(vector<int>& arr)
+//	{
+//		int ans = 0;
+//		int lenmax = 0;
+//		for (int i = 0; i < arr.size(); i++)
+//		{
+//			int len = 1;
+//			int j = arr[i];
+//			while (find(arr.begin(), arr.end(), j + 1) != arr.end())
+//			{
+//				len++;
+//				j++;
+//			}
+//			if (len > lenmax)
+//			{
+//				lenmax = len;
+//				ans = lenmax;
+//			}
+//		}
+//		return ans;
+//	}
+//};
