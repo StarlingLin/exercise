@@ -14,25 +14,55 @@
 using namespace std;
 
 //ÔËÐÐ³¬Ê±
+//int main() 
+//{
+//	long long a, b, h, k;
+//	cin >> a >> h >> b >> k;
+//	long long damage = 0;
+//	while (h > 0 && k > 0) 
+//	{
+//		damage += a + b;
+//		h -= b;
+//		if (h <= 0) {
+//			damage += 10 * b;
+//			break;
+//		}
+//		k -= a;
+//		if (k <= 0) {
+//			damage += 10 * a;
+//			break;
+//		}
+//	}
+//	cout << damage << endl;
+//	return 0;
+//}
+
+#include <iostream>
+
+using namespace std;
+
 int main() 
 {
-	long long a, b, h, k;
-	cin >> a >> h >> b >> k;
-	long long damage = 0;
-	while (h > 0 && k > 0) 
-	{
-		damage += a + b;
-		h -= b;
-		if (h <= 0) {
-			damage += 10 * b;
-			break;
-		}
-		k -= a;
-		if (k <= 0) {
-			damage += 10 * a;
-			break;
-		}
-	}
-	cout << damage << endl;
-	return 0;
+    long long a, b, h, k;
+    cin >> a >> h >> b >> k;
+    long long damage = 0;
+
+    long long rounds = min((h + b - 1) / b, (k + a - 1) / a);
+    damage += rounds * (a + b);
+
+    h -= rounds * b;
+    k -= rounds * a;
+
+    if (h <= 0 && k > 0) 
+    {
+        damage += 10 * b;
+    }
+    else if (k <= 0 && h > 0) 
+    {
+        damage += 10 * a;
+    }
+
+    cout << damage << endl;
+
+    return 0;
 }
