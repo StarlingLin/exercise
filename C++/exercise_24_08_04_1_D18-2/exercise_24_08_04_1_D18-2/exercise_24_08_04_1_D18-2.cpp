@@ -62,7 +62,7 @@ using namespace std;
 
 const int N = 2e5 + 10;
 
-typedef pair<int, int> PII; // <Ëá¶È£¬Ìð¶È>
+typedef pair<int, int> PII;
 
 PII arr[N];
 int n, k;
