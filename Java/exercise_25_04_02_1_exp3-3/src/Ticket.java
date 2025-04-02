@@ -1,7 +1,7 @@
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Ticket {
-    private static final AtomicInteger remainingTickets = new AtomicInteger(1000);
+    private static final AtomicInteger remainingTickets = new AtomicInteger(100);
     public static void main(String[] args) {
         for (int i = 1; i <= 5; i++) {
             new Thread(new TicketThread(i)).start();
