@@ -1,0 +1,19 @@
+----------------------------------------------------------------
+Wed Apr 09 18:15:30 HKT 2025:
+正在使用类加载程序 jdk.internal.loader.ClassLoaders$AppClassLoader@36baf30c 引导数据库
+目录 Z:\exercise\Java\exercise_25_04_09_1_exp4-1\myDB 中的 Derby 版本 The Apache Software Foundation - Apache Derby - 10.17.1.0 - (1913217) 实例 a816c00e-0196-1a0c-36b0-00000f18e1b8
+已从 file:/Z:/%e4%bc%9a%e7%94%a8%e5%88%b0%e7%9a%84%e5%a4%96%e6%9d%a5%e5%ba%93/db-derby-10.17.1.0-bin/lib/derby.jar 加载
+java.vendor=Oracle Corporation
+java.runtime.version=20.0.1+9-29
+user.dir=Z:\exercise\Java\exercise_25_04_09_1_exp4-1
+os.name=Windows 11
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+数据库类加载程序已启动 - derby.database.classpath=''
+----------------------------------------------------------------
+Wed Apr 09 18:15:30 HKT 2025：正在关闭 Derby 引擎
+----------------------------------------------------------------
+Wed Apr 09 18:15:31 HKT 2025:
+正在使用类加载程序 jdk.internal.loader.ClassLoaders$AppClassLoader@36baf30c 关闭数据库目录 Z:\exercise\Java\exercise_25_04_09_1_exp4-1\myDB 上的实例 a816c00e-0196-1a0c-36b0-00000f18e1b8
+----------------------------------------------------------------
