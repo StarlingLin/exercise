@@ -1,0 +1,22 @@
+@e4_aspcore_HostAddress = http://localhost:5056
+
+POST {{e4_aspcore_HostAddress}}/pizza/
+Content-Type: application/json
+
+{
+    "name": "Hawaii",
+    "isGlutenFree": false
+}
+
+###
+
+PUT {{e4_aspcore_HostAddress}}/pizza/3
+Content-Type: application/json
+
+{
+    "id": 3,
+    "name": "Hawaiian",
+    "isGlutenFree": false
+}
+
+###

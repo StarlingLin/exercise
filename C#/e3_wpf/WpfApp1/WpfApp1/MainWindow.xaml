@@ -1,0 +1,35 @@
+﻿<AduSkin:MetroWindow
+    x:Class="WpfApp1.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:AduSkin="clr-namespace:AduSkin.Controls.Metro;assembly=AduSkin"
+    xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="av"
+    Title="MainWindow"
+    Width="800"
+    Height="450">
+
+    <Grid x:Name="RootGrid">
+        <AduSkin:AduFlatButton
+            Width="120"
+            Height="40"
+            Content="修改颜色"
+            Margin="209,282,471,113"
+            Click="ChangeColorButton_Click" />
+
+        <ListBox
+            HorizontalAlignment="Left"
+            Height="151"
+            Margin="191,66,0,0"
+            VerticalAlignment="Top"
+            Width="156"
+            av:ItemsSource="{av:SampleData ItemCount=5}" />
+
+        <Label
+            Content="55231015"
+            HorizontalAlignment="Left"
+            Margin="500,180,0,0"
+            VerticalAlignment="Top" />
+    </Grid>
+</AduSkin:MetroWindow>
