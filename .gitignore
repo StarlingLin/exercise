@@ -1,1 +1,52 @@
-/.debug-leetcode-cache
+# Visual Studio / .NET
+.vs/
+[Bb]in/
+[Oo]bj/
+Debug/
+Release/
+bin-debug/
+bin-release/
+
+*.user
+*.suo
+*.db
+*.ipch
+*.cache
+
+# C / C++ generated files
+*.exe
+*.out
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.so
+*.dylib
+
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Eclipse
+.settings/
+
+# Archives and packages
+*.rar
+*.swf
+*.air
+*.ipa
+*.apk
+
+# LeetCode
+.debug-leetcode-cache/
+
+# Machine learning datasets / weights
+*.pth
+/FashionMNIST/
+
+# Specific generated files
+/C/exercise_24_04_21_1_外部排序/exercise_24_04_21_1_外部排序/data.txt
+/C/exercise_24_04_21_1_外部排序/exercise_24_04_21_1_外部排序/SubSort/
+/C/exercise_24_04_21_1_外部排序/exercise_24_04_21_1_外部排序/sort_merge.txt
