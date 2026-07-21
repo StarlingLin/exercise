@@ -1,4 +1,5 @@
 # Visual Studio / .NET
+.vscode/
 .vs/
 [Bb]in/
 [Oo]bj/
