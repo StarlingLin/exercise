@@ -62,7 +62,7 @@ struct ListNode
 // 10ms
 // 递归
 // if (!self(right->next)) return false;
-// 从递归模板（归途处理|参与计算）简化而来：
+// 从递归模板（归途处理|短路传播）简化而来：
 // if (!right) return true;         终止条件-到链表尾返回成功
 // bool result = self(right->next); 子递归结果参与当前层计算
 // if (!result) return false;       子递归失败则直接向上传递
@@ -75,7 +75,7 @@ class Solution
         return [&](this auto&& self, ListNode* right) -> bool
         {
             if (!right) return true;
-            if (!self(right->next)) return false;
+            if (!self(right->next)) return false    ;
             if (left->val != right->val) return false;
             left = left->next;
             return true;
