@@ -11,6 +11,5 @@ ReferenceAlignment: Pointer
 
 AllowShortLoopsOnASingleLine: true
 AllowShortIfStatementsOnASingleLine: true
-AllowShortBlocksOnASingleLine: true
 
 AllowShortFunctionsOnASingleLine: Empty
