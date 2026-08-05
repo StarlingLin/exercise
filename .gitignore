@@ -43,6 +43,9 @@ out/
 # LeetCode
 .debug-leetcode-cache/
 
+# Draft
+MyDraft/
+
 # Machine learning datasets / weights
 *.pth
 /FashionMNIST/
