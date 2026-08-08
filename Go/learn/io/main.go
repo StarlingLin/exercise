@@ -41,4 +41,37 @@ func main() {
 	fmt.Printf("%T\n", example{})                // main.example
 	fmt.Printf("%U\n", '码')                      // U+7801
 	fmt.Printf("% x\n", "abcdef")                // 61 62 63 64 65 66
+
+	//----------
+	// INPUT
+	//----------
+	// 麻烦的用法，不建议
+	// var buf [1024]byte
+	// n, _ := os.Stdin.Read(buf[:])
+	// os.Stdout.Write(buf[:n])
+
+	// var a, b int
+	// fmt.Scanln(&a, &b)
+	// fmt.Println(a, b)
+
+	// s := make([]int, 10)
+	// for i := range 10 {
+	// 	fmt.Scan(&s[i])
+	// }
+	// fmt.Println(s)
+
+	// 输入量大时用bufio
+	reader := bufio.NewReader(os.Stdin)
+	var x, y int
+	fmt.Fscanln(reader, &x, &y)
+	fmt.Println(x, y)
+	// scanner按行读
+	// scanner := bufio.NewScanner(os.Stdin)
+	// for scanner.Scan() {
+	// 	line := scanner.Text()
+	// 	if line == "exit" {
+	// 		break
+	// 	}
+	// 	fmt.Println("scan:", line)
+	// }
 }
